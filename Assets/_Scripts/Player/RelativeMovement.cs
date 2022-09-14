@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterAnimator))]
 public class RelativeMovement : MonoBehaviour
 {
+    [SerializeField] private DynamicJoystick _joystick;
     [SerializeField] private float _speed = 15f;
     [SerializeField] private float _rotationSpeed = 15f;
 
@@ -34,8 +35,8 @@ public class RelativeMovement : MonoBehaviour
 
     private void TryMove()
     {
-        var horizontal = Input.GetAxis(Axis.Horizontal);
-        var vertical = Input.GetAxis(Axis.Vertical);
+        var horizontal = _joystick.Horizontal;
+        var vertical = _joystick.Vertical;
 
         if (horizontal != 0 || vertical != 0)
         {
