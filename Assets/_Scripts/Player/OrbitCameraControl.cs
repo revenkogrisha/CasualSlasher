@@ -3,7 +3,6 @@ using UnityEngine;
 public class OrbitCameraControl : MonoBehaviour
 {
     [SerializeField] private Transform _target;
-    [SerializeField] private float _rotationSensivity = 4.5f;
     private Transform _transform;
     private Vector3 _offset;
 
