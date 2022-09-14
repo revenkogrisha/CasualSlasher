@@ -14,7 +14,6 @@ public class RelativeMovement : MonoBehaviour
     private Transform _camera;
     private CharacterController _characterController;
     private CharacterAnimator _animator;
-    private RelativeJump _relativeJump;
 
     public event Action OnRunStarted;
     public event Action OnRunEnded;
@@ -25,7 +24,6 @@ public class RelativeMovement : MonoBehaviour
         _camera = Camera.main.transform;
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<CharacterAnimator>();
-        _relativeJump = GetComponent<RelativeJump>();
     }
 
     private void Update()
@@ -47,11 +45,12 @@ public class RelativeMovement : MonoBehaviour
             _movement = Vector3.ClampMagnitude(_movement, _speed);
 
             SetMovementRelativeToCamera();
-        }
-        
-        OnRunEnded?.Invoke();
+            Move();
 
-        Move();
+            return;
+        }
+
+        OnRunEnded?.Invoke();
     }
 
     private void SetMovementRelativeToCamera()
@@ -68,7 +67,6 @@ public class RelativeMovement : MonoBehaviour
 
     private void Move()
     {
-        _movement.y += _relativeJump.TryGetJumpY();
         _movement.y += Physics.gravity.y;
         _movement *= Time.deltaTime;
         _characterController.Move(_movement);
