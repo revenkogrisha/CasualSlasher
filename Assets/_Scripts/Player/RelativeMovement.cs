@@ -26,17 +26,16 @@ public class RelativeMovement : MonoBehaviour
     {
         var movement = GetMovementVector();
 
-        if (movement.x != 0 || movement.z != 0)
+        if (movement.x == 0f && movement.z == 0f)
         {
-            OnRunStarted?.Invoke();
-            
-            ApplyBodyDirection(movement);
-            Move(movement);
-
+            OnRunEnded?.Invoke();
             return;
         }
 
-        OnRunEnded?.Invoke();
+        OnRunStarted?.Invoke();
+            
+        ApplyBodyDirection(movement);
+        Move(movement);
     }
 
     private void ApplyBodyDirection(Vector3 movement)
