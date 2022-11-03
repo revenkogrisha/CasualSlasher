@@ -1,50 +1,28 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(CharacterAnimator))]
 public class RelativeMovement : MonoBehaviour
 {
+    [SerializeField] private CharacterController _characterController;
     [SerializeField] private DynamicJoystick _joystick;
     [SerializeField] private float _speed = 15f;
     [SerializeField] private float _rotationSpeed = 15f;
 
-    private Vector3 _movement;
-    private Transform _transform;
-    private Transform _camera;
-    private CharacterController _characterController;
-    private CharacterAnimator _animator;
-
     public event Action OnRunStarted;
     public event Action OnRunEnded;
 
-    private void Awake()
-    {
-        _transform = transform;
-        _camera = Camera.main.transform;
-        _characterController = GetComponent<CharacterController>();
-        _animator = GetComponent<CharacterAnimator>();
-    }
-
-    private void Update()
-    {
-        TryMove();
-    }
+    private void Update() => TryMove();
 
     private void TryMove()
     {
-        var horizontal = _joystick.Horizontal;
-        var vertical = _joystick.Vertical;
+        var movement = GetMovementVector();
 
-        if (horizontal != 0 || vertical != 0)
+        if (movement.x != 0|| movement.z != 0)
         {
             OnRunStarted?.Invoke();
 
-            _movement = new(horizontal, 0f, vertical);
-            _movement *= _speed;
-            _movement = Vector3.ClampMagnitude(_movement, _speed);
-
-            Move();
+            Move(movement);
 
             return;
         }
@@ -52,10 +30,23 @@ public class RelativeMovement : MonoBehaviour
         OnRunEnded?.Invoke();
     }
 
-    private void Move()
+    private Vector3 GetMovementVector()
     {
-        _movement.y += Physics.gravity.y;
-        _movement *= Time.deltaTime;
-        _characterController.Move(_movement);
+        var movement = new Vector3(
+            _joystick.Horizontal,
+            0,
+            _joystick.Vertical);
+
+        movement *= _speed;
+        movement = Vector3.ClampMagnitude(movement, _speed);
+
+        return movement;
+    }
+
+    private void Move(Vector3 movement)
+    {
+        movement.y += Physics.gravity.y;
+        movement *= Time.deltaTime;
+        _characterController.Move(movement);
     }
 }
