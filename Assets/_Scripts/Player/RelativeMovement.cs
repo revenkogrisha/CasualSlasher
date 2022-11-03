@@ -25,18 +25,18 @@ public class RelativeMovement : MonoBehaviour
     private void TryMove()
     {
         var movement = GetMovementVector();
-
-        if (movement.x != 0 || movement.z != 0)
+        if (movement.x == 0 && movement.z == 0)
         {
-            OnRunStarted?.Invoke();
-            
-            ApplyBodyDirection(movement);
-            Move(movement);
-
+            OnRunEnded?.Invoke();
             return;
         }
 
-        OnRunEnded?.Invoke();
+        OnRunStarted?.Invoke();
+            
+        ApplyBodyDirection(movement);
+
+        movement = ApplyGravity(movement);
+        Move(movement);
     }
 
     private void ApplyBodyDirection(Vector3 movement)
@@ -57,13 +57,17 @@ public class RelativeMovement : MonoBehaviour
 
         movement *= _speed;
         movement = Vector3.ClampMagnitude(movement, _speed);
+        return movement;
+    }
 
+    private Vector3 ApplyGravity(Vector3 movement)
+    {
+        movement.y += Physics.gravity.y;
         return movement;
     }
 
     private void Move(Vector3 movement)
     {
-        movement.y += Physics.gravity.y;
         movement *= Time.deltaTime;
         _characterController.Move(movement);
     }
