@@ -9,8 +9,12 @@ public class RelativeMovement : MonoBehaviour
     [SerializeField] private float _speed = 15f;
     [SerializeField] private float _rotationSpeed = 15f;
 
+    private Transform _transform;
+
     public event Action OnRunStarted;
     public event Action OnRunEnded;
+
+    private void Awake() => _transform = transform;
 
     private void Update() => TryMove();
 
@@ -18,16 +22,26 @@ public class RelativeMovement : MonoBehaviour
     {
         var movement = GetMovementVector();
 
-        if (movement.x != 0|| movement.z != 0)
+        if (movement.x != 0 || movement.z != 0)
         {
             OnRunStarted?.Invoke();
-
+            
+            SetBodyDirection(movement);
             Move(movement);
 
             return;
         }
 
         OnRunEnded?.Invoke();
+    }
+
+    private void SetBodyDirection(Vector3 movement)
+    {
+        var direction = Quaternion.LookRotation(movement);
+        _transform.rotation = Quaternion.Lerp(
+            _transform.rotation,
+            direction,
+            _rotationSpeed * Time.deltaTime);
     }
 
     private Vector3 GetMovementVector()
