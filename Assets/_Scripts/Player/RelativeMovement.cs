@@ -44,25 +44,12 @@ public class RelativeMovement : MonoBehaviour
             _movement *= _speed;
             _movement = Vector3.ClampMagnitude(_movement, _speed);
 
-            SetMovementRelativeToCamera();
             Move();
 
             return;
         }
 
         OnRunEnded?.Invoke();
-    }
-
-    private void SetMovementRelativeToCamera()
-    {
-        Quaternion temporary = _camera.rotation;
-        _camera.eulerAngles = new(0, _camera.eulerAngles.y, 0);
-        _movement = _camera.TransformDirection(_movement);
-        _camera.rotation = temporary;
-        
-        var direction = Quaternion.LookRotation(_movement);
-        _transform.rotation = Quaternion.Lerp(
-            _transform.rotation, direction, _rotationSpeed * Time.deltaTime);
     }
 
     private void Move()
