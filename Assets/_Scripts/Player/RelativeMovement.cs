@@ -30,7 +30,7 @@ public class RelativeMovement : MonoBehaviour
         {
             OnRunStarted?.Invoke();
             
-            SetBodyDirection(movement);
+            ApplyBodyDirection(movement);
             Move(movement);
 
             return;
@@ -39,7 +39,7 @@ public class RelativeMovement : MonoBehaviour
         OnRunEnded?.Invoke();
     }
 
-    private void SetBodyDirection(Vector3 movement)
+    private void ApplyBodyDirection(Vector3 movement)
     {
         var direction = Quaternion.LookRotation(movement);
         _transform.rotation = Quaternion.Lerp(
