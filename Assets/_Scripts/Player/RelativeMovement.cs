@@ -14,9 +14,13 @@ public class RelativeMovement : MonoBehaviour
     public event Action OnRunStarted;
     public event Action OnRunEnded;
 
+    #region MonoBehaviour
+
     private void Awake() => _transform = transform;
 
     private void Update() => TryMove();
+
+    #endregion
 
     private void TryMove()
     {

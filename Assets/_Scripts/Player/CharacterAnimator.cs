@@ -10,6 +10,8 @@ public class CharacterAnimator : MonoBehaviour
 
     private RelativeMovement _relativeMovement;
 
+    #region MonoBehaviour
+
     private void Awake()
     {
         _relativeMovement = GetComponent<RelativeMovement>();
@@ -26,6 +28,8 @@ public class CharacterAnimator : MonoBehaviour
         _relativeMovement.OnRunStarted -= EnableRunning;
         _relativeMovement.OnRunEnded -= DisableRunning;
     }
+
+    #endregion
 
     private void EnableRunning()
     {
