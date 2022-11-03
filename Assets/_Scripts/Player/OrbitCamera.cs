@@ -1,10 +1,12 @@
 using UnityEngine;
 
-public class OrbitCameraControl : MonoBehaviour
+public class OrbitCamera : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     private Transform _transform;
     private Vector3 _offset;
+
+    #region MonoBehaviour
 
     private void Awake()
     {
@@ -12,10 +14,9 @@ public class OrbitCameraControl : MonoBehaviour
         _offset = _target.position - _transform.position;
     }
 
-    private void LateUpdate()
-    {
-        ApplyRotation();
-    }
+    private void LateUpdate() => ApplyRotation();
+
+    #endregion
 
     private void ApplyRotation()
     {
