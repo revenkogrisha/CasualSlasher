@@ -41,7 +41,11 @@ public class RelativeMovement : MonoBehaviour
 
     private void ApplyBodyDirection(Vector3 movement)
     {
+        if (movement == Vector3.zero)
+            return;
+
         var direction = Quaternion.LookRotation(movement);
+
         _transform.rotation = Quaternion.Lerp(
             _transform.rotation,
             direction,
