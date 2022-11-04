@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TwoDoors.GUI.Buttons
+namespace UnityTools.Buttons
 {
     /// <summary>
     /// Activates and disactivates GameObjects.

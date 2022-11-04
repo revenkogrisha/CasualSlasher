@@ -1,4 +1,4 @@
-﻿namespace TwoDoors
+﻿namespace UnityTools
 {
     /// <summary>
     /// Class must disables all events

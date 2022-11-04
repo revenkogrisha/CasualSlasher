@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Revenkorg
+namespace UnityTools
 {
     public static class Tools
     {

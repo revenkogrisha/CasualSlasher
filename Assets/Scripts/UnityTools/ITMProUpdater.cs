@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-namespace TwoDoors.GUI
+namespace UnityTools
 {
     public abstract class ITMProUpdater : MonoBehaviour
     {

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-namespace TwoDoors.GUI.Buttons
+namespace UnityTools.Buttons
 {
     [RequireComponent(typeof(Button))]
     public abstract class UIButton : MonoBehaviour
