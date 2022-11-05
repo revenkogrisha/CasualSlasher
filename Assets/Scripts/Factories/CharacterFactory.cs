@@ -4,17 +4,15 @@ public class CharacterFactory : MonoBehaviour
 {
     [SerializeField] private Transform _target;
     [SerializeField] private StatsConfig _statsConfig;
-    [SerializeField] private Character _characterPrefab;
 
-    public Character GetEnemy()
+    public Character InitCharacter(Character character)
     {
-        var character = _characterPrefab;
-        character = SetupStats(character, _statsConfig);
+        character = InitStats(character, _statsConfig);
         character = TrySetupMovement(character, _target);
         return character;
     }
 
-    private Character SetupStats(Character character, StatsConfig config)
+    private Character InitStats(Character character, StatsConfig config)
     {
         character.InitStats(config);
         return character;
@@ -30,6 +28,7 @@ public class CharacterFactory : MonoBehaviour
         }
 
         agentMovement.SetTarget(target);
+        agentMovement.SetSpeed();
         return character;
     }
 }
