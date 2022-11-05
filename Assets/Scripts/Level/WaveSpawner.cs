@@ -2,22 +2,22 @@ using UnityEngine;
 using UnityTools;
 
 [RequireComponent(typeof(Timer))]
-[RequireComponent(typeof(CharacterFactory))]
 public class WaveSpawner : MonoBehaviour
 {
+    [SerializeField] private CharacterFactory _factory;
+    [SerializeField] private GroundCheck _groundCheck;
+    [SerializeField] private Character _characterPrefab;
     [SerializeField] private Transform _originTransform;
     [SerializeField] private float _spawnRadius;
     [SerializeField] private int _countInGroup;
 
     private Timer _timer;
-    private CharacterFactory _factory;
 
     #region MonoBehaviour
 
     private void Awake()
     {
         _timer = GetComponent<Timer>();
-        _factory = GetComponent<CharacterFactory>();
     }
 
     private void OnEnable()
@@ -34,13 +34,18 @@ public class WaveSpawner : MonoBehaviour
 
     public void SpawnRandomWave()
     {
-        for (int i = 0; i < _countInGroup; i++)
+        var i = 0;
+        while (i < _countInGroup)
         {
             var spawnPosition = GetPositionInCircle(_originTransform.position, _spawnRadius);
+            if (!_groundCheck.CheckGroundOnPosition(spawnPosition))
+                continue;
 
-            var enemy = _factory.GetEnemy();
+            var character = Instantiate(_characterPrefab, spawnPosition, Quaternion.identity);
 
-            Instantiate(enemy, spawnPosition, Quaternion.identity);
+            _factory.InitCharacter(character);
+
+            i++;
         }
     }
 
