@@ -14,17 +14,17 @@ public class AgentMovement : MonoBehaviour
     {
         if (!_navMeshAgent.isOnNavMesh)
             Destroy(gameObject);
-
-        SetSpeed();
     }
 
-    private void Update()
+    private void Update() => TrySetDestination();
+
+    #endregion
+
+    private void TrySetDestination()
     {
         if (_target && _navMeshAgent.isOnNavMesh)
             _navMeshAgent.SetDestination(_target.position);
     }
-
-    #endregion
 
     public void SetTarget(Transform target) => _target = target;
 
