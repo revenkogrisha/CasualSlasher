@@ -8,7 +8,7 @@ public class Character : MonoBehaviour, IStatisticsCarrier
 
     public void InitStats(StatsConfig enemyStatsConfig) => _stats = new(enemyStatsConfig);
 
-    private void TakeDamageAndCheckHealth(float amount)
+    public void TakeDamage(float amount)
     {
         var damage = amount - _stats.DamageResistance;
         _stats.HealthAmount -= damage;
