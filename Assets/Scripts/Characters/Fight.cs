@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Fight : MonoBehaviour
 {
+    [SerializeField] private Character _character;
     [SerializeField] private float _damage = 2f;
     [SerializeField] private float _hitCooldown = 2f;
     [SerializeField] private float _hitRadius;
@@ -13,11 +14,21 @@ public class Fight : MonoBehaviour
 
     #region MonoBehaviour
 
-    private void OnTriggerStay(Collider other) => TryHit();
+    private void OnEnable()
+    {
+        _character.OnDamageTaken += GetStun;
+    }
+    
+    private void OnDisable()
+    {
+        _character.OnDamageTaken -= GetStun;
+    }
+
+    private void OnTriggerStay(Collider other) => TryHit(_damage);
 
     #endregion
 
-    public void TryHit()
+    public void TryHit(float damage)
     {
         if (!_canHit)
             return;
@@ -30,23 +41,25 @@ public class Fight : MonoBehaviour
             character = item.GetComponentInParent<Character>();
             if (character)
             {
-                Hit(character);
-                StartCoroutine(StartHitCooldown());
+                character.TakeDamage(damage);
+                StartCoroutine(StartHitCooldown(_hitCooldown));
             }
         }
 
     }
 
-    private void Hit(Character character)
+    private void GetStun()
     {
-        character.TakeDamage(_damage);
+        var stats = _character.Stats;
+        var stunDuration = stats.StunDuration;
+        StartCoroutine(StartHitCooldown(stunDuration));
     }
 
-    private IEnumerator StartHitCooldown()
+    private IEnumerator StartHitCooldown(float cooldown)
     {
         _canHit = false;
 
-        yield return new WaitForSeconds(_hitCooldown);
+        yield return new WaitForSeconds(cooldown);
 
         _canHit = true;
     }
