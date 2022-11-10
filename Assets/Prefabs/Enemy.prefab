@@ -356,10 +356,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 2459168159386619053}
-  _damage: 5
   _hitCooldown: 1
   _hitRadius: 0.5
   _hitSphere: {fileID: 2557911571744681261}
   _hitLayer:
     serializedVersion: 2
-    m_Bits: 640
+    m_Bits: 512

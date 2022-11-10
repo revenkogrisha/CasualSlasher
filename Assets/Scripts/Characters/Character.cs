@@ -16,11 +16,16 @@ public class Character : MonoBehaviour, IStatisticsCarrier
         var damage = amount - _stats.DamageResistance;
         _stats.HealthAmount -= damage;
 
-        if(_stats.HealthAmount <= 0)
+        if (_stats.HealthAmount <= 0)
+        {
             Die();
+            return;
+        }
+
+        OnDamageTaken?.Invoke();
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         // TODO: Implement Die logic
         Destroy(gameObject);
