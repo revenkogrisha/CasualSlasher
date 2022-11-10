@@ -7,7 +7,7 @@ public class Character : MonoBehaviour, IStatisticsCarrier
 
     public Statistics Stats => _stats;
 
-    public void InitStats(StatsConfig enemyStatsConfig) => _stats = new(enemyStatsConfig);
+    public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
 
     public event Action OnDamageTaken;
 
