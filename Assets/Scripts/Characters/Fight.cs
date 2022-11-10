@@ -4,7 +4,6 @@ using UnityEngine;
 public class Fight : MonoBehaviour
 {
     [SerializeField] private Character _character;
-    [SerializeField] private float _damage = 2f;
     [SerializeField] private float _hitCooldown = 2f;
     [SerializeField] private float _hitRadius;
     [SerializeField] private Transform _hitSphere;
@@ -24,7 +23,7 @@ public class Fight : MonoBehaviour
         _character.OnDamageTaken -= GetStun;
     }
 
-    private void OnTriggerStay(Collider other) => TryHit(_damage);
+    private void OnTriggerStay(Collider other) => TryHit(_character.Stats.DamageAmount);
 
     #endregion
 
