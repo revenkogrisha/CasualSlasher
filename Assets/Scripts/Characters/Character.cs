@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IStatisticsCarrier
@@ -7,6 +8,8 @@ public class Character : MonoBehaviour, IStatisticsCarrier
     public Statistics Stats => _stats;
 
     public void InitStats(StatsConfig enemyStatsConfig) => _stats = new(enemyStatsConfig);
+
+    public event Action OnDamageTaken;
 
     public void TakeDamage(float amount)
     {
