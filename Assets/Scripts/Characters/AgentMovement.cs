@@ -1,30 +1,32 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
 public class AgentMovement : MonoBehaviour
 {
-    [SerializeField] private IStatisticsCarrier _statsCarrier;
+    [SerializeField] private Character _character;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
 
     private Transform _target;
-    private NavMeshAgent _navMeshAgent;
 
     #region MonoBehaviour
 
     private void Awake()
     {
-        _navMeshAgent = GetComponent<NavMeshAgent>();
-
-        _navMeshAgent.speed = _statsCarrier.Stats.MovementSpeed;
+        if (!_navMeshAgent.isOnNavMesh)
+            Destroy(gameObject);
     }
 
-    private void Update()
-    {
-        if (_target)
-            _navMeshAgent.SetDestination(_target.position);
-    }
+    private void Update() => TrySetDestination();
 
     #endregion
 
+    private void TrySetDestination()
+    {
+        if (_target && _navMeshAgent.isOnNavMesh)
+            _navMeshAgent.SetDestination(_target.position);
+    }
+
     public void SetTarget(Transform target) => _target = target;
+
+    public void SetSpeed() => _navMeshAgent.speed = _character.Stats.MovementSpeed;
 }
