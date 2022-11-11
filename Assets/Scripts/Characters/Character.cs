@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Character : MonoBehaviour, IStatisticsCarrier
@@ -6,18 +7,25 @@ public class Character : MonoBehaviour, IStatisticsCarrier
 
     public Statistics Stats => _stats;
 
-    public void InitStats(StatsConfig enemyStatsConfig) => _stats = new(enemyStatsConfig);
+    public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
 
-    private void TakeDamageAndCheckHealth(float amount)
+    public event Action OnDamageTaken;
+
+    public void TakeDamage(float amount)
     {
         var damage = amount - _stats.DamageResistance;
         _stats.HealthAmount -= damage;
 
-        if(_stats.HealthAmount <= 0)
+        if (_stats.HealthAmount <= 0)
+        {
             Die();
+            return;
+        }
+
+        OnDamageTaken?.Invoke();
     }
 
-    private void Die()
+    protected virtual void Die()
     {
         // TODO: Implement Die logic
         Destroy(gameObject);
