@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,6 +9,9 @@ public class AgentMovement : MonoBehaviour
 
     private Transform _target;
 
+    public event Action OnMovementStarted;
+    public event Action OnMovementStopped;
+
     #region MonoBehaviour
 
     private void Awake()
@@ -16,14 +20,25 @@ public class AgentMovement : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void Update() => TrySetDestination();
-
+    private void Update()
+    {
+        TrySetDestination();
+        TryInvokeMovementEvents();
+    }
     #endregion
 
     private void TrySetDestination()
     {
         if (_target && _navMeshAgent.isOnNavMesh)
             _navMeshAgent.SetDestination(_target.position);
+    }
+
+    private void TryInvokeMovementEvents()
+    {
+        if (_navMeshAgent.isStopped)
+            OnMovementStopped?.Invoke();
+        else
+            OnMovementStarted?.Invoke();
     }
 
     public void SetTarget(Transform target) => _target = target;
