@@ -1,15 +1,15 @@
 using System;
 using UnityEngine;
 
-public class Character : MonoBehaviour, IStatisticsCarrier
+public class Character : MonoBehaviour
 {
     private Statistics _stats;
 
     public Statistics Stats => _stats;
 
-    public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
-
     public event Action OnDamageTaken;
+
+    public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
 
     public void TakeDamage(float amount)
     {
