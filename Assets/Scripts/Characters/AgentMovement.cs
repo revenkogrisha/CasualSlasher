@@ -27,6 +27,10 @@ public class AgentMovement : MonoBehaviour
     }
     #endregion
 
+    public void SetTarget(Transform target) => _target = target;
+
+    public void SetSpeed() => _navMeshAgent.speed = _character.Stats.MovementSpeed;
+
     private void TrySetDestination()
     {
         if (_target && _navMeshAgent.isOnNavMesh)
@@ -40,8 +44,4 @@ public class AgentMovement : MonoBehaviour
         else
             OnMovementStarted?.Invoke();
     }
-
-    public void SetTarget(Transform target) => _target = target;
-
-    public void SetSpeed() => _navMeshAgent.speed = _character.Stats.MovementSpeed;
 }
