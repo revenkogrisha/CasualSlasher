@@ -8,6 +8,7 @@ public class Character : MonoBehaviour
     public Statistics Stats => _stats;
 
     public event Action OnDamageTaken;
+    public event Action OnCharacterDied;
 
     public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
 
@@ -27,7 +28,6 @@ public class Character : MonoBehaviour
 
     protected virtual void Die()
     {
-        // TODO: Implement Die logic
-        Destroy(gameObject);
+        OnCharacterDied?.Invoke();
     }
 }
