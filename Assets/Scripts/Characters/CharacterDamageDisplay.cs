@@ -58,10 +58,7 @@ public class CharacterDamageDisplay : MonoBehaviour
 
     private IEnumerator DisplayColor()
     {
-        var originalColors = new List<Color>();
-
-        for (var i = 0; i < _renderers.Length; i++)
-            originalColors.Add(_renderers[i].material.color);
+        var originalColors = GetOriginalColors(_renderers);
 
         foreach (var renderer in _renderers)
             renderer.material.color = _damageColor;
@@ -70,5 +67,15 @@ public class CharacterDamageDisplay : MonoBehaviour
 
         for (var i = 0; i < _renderers.Length; i++)
             _renderers[i].material.color = originalColors[i];
+    }
+
+    private Color[] GetOriginalColors(MeshRenderer[] renderers)
+    {
+        var originalColors = new List<Color>();
+
+        for (var i = 0; i < renderers.Length; i++)
+            originalColors.Add(renderers[i].material.color);
+
+        return originalColors.ToArray();
     }
 }
