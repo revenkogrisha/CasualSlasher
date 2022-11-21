@@ -315,7 +315,9 @@ MonoBehaviour:
   - {fileID: 2459168157980621859}
   - {fileID: 2459168157911570492}
   _damageColor: {r: 1, g: 0.3820755, b: 0.3820755, a: 0}
-  _displayDurationInSeconds: 0.1
+  _scaleDuration: 0.149
+  _scaleAmount: 0.853
+  _displayDurationInSeconds: 0.027
 --- !u!1 &5555846856735785522
 GameObject:
   m_ObjectHideFlags: 0
