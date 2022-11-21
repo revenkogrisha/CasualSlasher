@@ -39,13 +39,15 @@ public class CharacterDamageDisplay : MonoBehaviour
 
     private void DisplayDeath()
     {
-        transform.DOScale(0f, _scaleDuration);
-        StartCoroutine(DestroyWithDelay());
+        DOTween.Sequence()
+            .Append(transform.DOScale(0f, _scaleDuration))
+            .AppendInterval(_destroyDelay)
+            .AppendCallback(ApplyDeath);
+        
     }
 
-    private IEnumerator DestroyWithDelay()
+    private void ApplyDeath()
     {
-        yield return new WaitForSeconds(_destroyDelay);
         Destroy(gameObject);
     }
 
