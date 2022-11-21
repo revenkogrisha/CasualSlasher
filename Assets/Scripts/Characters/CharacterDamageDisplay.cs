@@ -13,16 +13,20 @@ public class CharacterDamageDisplay : MonoBehaviour
     [SerializeField] [Range(0.5f, 1f)] private float _scaleAmount;
     [SerializeField] [Range(0f, 1)] private float _displayDurationInSeconds;
 
+    private float _destroyDelay = 1f;
+
     #region MonoBehaviour
 
     private void OnEnable()
     {
         _character.OnDamageTaken += DisplayDamage;
+        _character.OnCharacterDied += DisplayDeath;
     }
 
     private void OnDisable()
     {
         _character.OnDamageTaken -= DisplayDamage;
+        _character.OnCharacterDied -= DisplayDeath;
     }
 
     #endregion
@@ -31,6 +35,18 @@ public class CharacterDamageDisplay : MonoBehaviour
     {
         DisplayScale();
         StartCoroutine(DisplayColor());
+    }
+
+    private void DisplayDeath()
+    {
+        transform.DOScale(0f, _scaleDuration);
+        StartCoroutine(DestroyWithDelay());
+    }
+
+    private IEnumerator DestroyWithDelay()
+    {
+        yield return new WaitForSeconds(_destroyDelay);
+        Destroy(gameObject);
     }
 
     private void DisplayScale()
