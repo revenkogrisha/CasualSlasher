@@ -15,6 +15,7 @@ public class AgentMovement : MonoBehaviour
     private Transform _transform;
     private LayerMask _targetLayer;
     private bool _isMovementBlocked = false;
+    private float _moveUpdateInterval = 0.1f;
 
     public event Action OnMovementStarted;
     public event Action OnMovementStopped;
@@ -27,15 +28,23 @@ public class AgentMovement : MonoBehaviour
             Destroy(gameObject);
 
         _transform = transform;
-    }
 
-    private void Update()
-    {
-        TrySetDestination();
-        TryInvokeMovementEvents();
+        StartCoroutine(Move());
     }
 
     #endregion
+
+    private IEnumerator Move()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(_moveUpdateInterval);
+
+            TrySetDestination();
+            TryInvokeMovementEvents();
+        }
+    }
+
 
     public void SetTarget(Transform target) => _target = target;
 
