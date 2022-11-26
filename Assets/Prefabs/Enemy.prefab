@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2459168157911570489}
   m_Material: {fileID: 13400000, guid: e44c8a4f0ae4de741b5dc4ed1edb8465, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -189,7 +189,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2459168157980621885}
   m_Material: {fileID: 13400000, guid: e44c8a4f0ae4de741b5dc4ed1edb8465, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -280,6 +280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 2459168159386619053}
+  _hitSphere: {fileID: 2557911571744681261}
+  _hitRadius: 0.5
   _navMeshAgent: {fileID: 2459168159386619219}
 --- !u!114 &3648537779527573196
 MonoBehaviour:
@@ -313,7 +315,7 @@ GameObject:
   - component: {fileID: 2557911571744681261}
   - component: {fileID: 4007118524163200322}
   - component: {fileID: 8267052403687631267}
-  m_Layer: 7
+  m_Layer: 2
   m_Name: HitSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
