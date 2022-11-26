@@ -3,14 +3,14 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Character), typeof(NavMeshAgent))]
 public class AgentMovement : MonoBehaviour
 {
-    [SerializeField] private Character _character;
-    [SerializeField] private Transform _hitSphere;
-    [SerializeField] private float _hitRadius;
     [SerializeField] private float _stopDistance = 3f;
-    [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] [Range(0, 1.5f)] private float _movementBlockDuration = 1f;
 
+    private Character _character;
+    private NavMeshAgent _navMeshAgent;
     private Transform _target;
     private Transform _transform;
     private LayerMask _targetLayer;
@@ -24,15 +24,28 @@ public class AgentMovement : MonoBehaviour
 
     private void Awake()
     {
+        InitFields();
+
         if (!_navMeshAgent.isOnNavMesh)
             Destroy(gameObject);
-
-        _transform = transform;
 
         StartCoroutine(Move());
     }
 
     #endregion
+
+    public void SetTarget(Transform target) => _target = target;
+
+    public void ApplyTargetLayer() => _targetLayer = _target.gameObject.layer;
+
+    public void ApplySpeed() => _navMeshAgent.speed = _character.Stats.MovementSpeed;
+
+    private void InitFields()
+    {
+        _character = GetComponent<Character>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _transform = transform;
+    }
 
     private IEnumerator Move()
     {
@@ -44,13 +57,6 @@ public class AgentMovement : MonoBehaviour
             TryInvokeMovementEvents();
         }
     }
-
-
-    public void SetTarget(Transform target) => _target = target;
-
-    public void ApplyTargetLayer() => _targetLayer = _target.gameObject.layer;
-
-    public void ApplySpeed() => _navMeshAgent.speed = _character.Stats.MovementSpeed;
 
     private void TrySetDestination()
     {
@@ -80,7 +86,7 @@ public class AgentMovement : MonoBehaviour
         _navMeshAgent.speed = 0f;
         _isMovementBlocked = true;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(_movementBlockDuration);
 
         ApplySpeed();
         _isMovementBlocked = false;
