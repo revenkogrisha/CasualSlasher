@@ -282,6 +282,7 @@ MonoBehaviour:
   _character: {fileID: 2459168159386619053}
   _hitSphere: {fileID: 2557911571744681261}
   _hitRadius: 0.5
+  _stopDistance: 3
   _navMeshAgent: {fileID: 2459168159386619219}
 --- !u!114 &3648537779527573196
 MonoBehaviour:

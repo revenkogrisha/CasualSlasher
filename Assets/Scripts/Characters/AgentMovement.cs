@@ -45,8 +45,9 @@ public class AgentMovement : MonoBehaviour
 
     private void TrySetDestination()
     {
-        if (TryStopInFrontOfTarget()
-            || !_target)
+        TryStopInFrontOfTarget();
+
+        if (!_target)
             return;
 
         _navMeshAgent.SetDestination(_target.position);
