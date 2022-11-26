@@ -12,6 +12,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] private NavMeshAgent _navMeshAgent;
 
     private Transform _target;
+    private Transform _transform;
     private LayerMask _targetLayer;
     private bool _isMovementBlocked = false;
 
@@ -24,6 +25,8 @@ public class AgentMovement : MonoBehaviour
     {
         if (!_navMeshAgent.isOnNavMesh)
             Destroy(gameObject);
+
+        _transform = transform;
     }
 
     private void Update()
@@ -42,14 +45,24 @@ public class AgentMovement : MonoBehaviour
 
     private void TrySetDestination()
     {
-        if (Physics.Raycast(transform.position, transform.forward, out var hit))
-            if (!_isMovementBlocked && hit.collider.gameObject.layer == _targetLayer && hit.distance < _stopDistance)
-                StartCoroutine(BlockMovement());
-
-        if (!_target)
+        if (TryStopInFrontOfTarget()
+            || !_target)
             return;
 
         _navMeshAgent.SetDestination(_target.position);
+    }
+
+    private bool TryStopInFrontOfTarget()
+    {
+        var raycast = Physics.Raycast(_transform.position, _transform.forward, out var hit);
+        if (raycast)
+            if (!_isMovementBlocked && hit.collider.gameObject.layer == _targetLayer && hit.distance < _stopDistance)
+            {
+                StartCoroutine(BlockMovement());
+                return true;
+            }
+
+        return false;
     }
 
     private IEnumerator BlockMovement()
