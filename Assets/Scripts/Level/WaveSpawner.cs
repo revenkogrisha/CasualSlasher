@@ -4,12 +4,16 @@ using UnityTools;
 [RequireComponent(typeof(Timer))]
 public class WaveSpawner : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField] private CharacterFactory _factory;
     [SerializeField] private GroundCheck _groundCheck;
+
     [SerializeField] private Character _characterPrefab;
     [SerializeField] private Transform _originTransform;
-    [SerializeField] private float _spawnRadius;
-    [SerializeField] private int _countInGroup;
+
+    [Header("Settings")]
+    [SerializeField] [Range(0f, 20f)] private float _spawnRadius = 15f;
+    [SerializeField] [Range(0, 4)] private int _countInGroup = 3;
 
     private Timer _timer;
 
