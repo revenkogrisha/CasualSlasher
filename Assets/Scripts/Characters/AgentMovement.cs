@@ -3,14 +3,16 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(Character), typeof(NavMeshAgent))]
 public class AgentMovement : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private Character _character;
+    [SerializeField] private NavMeshAgent _navMeshAgent;
+
+    [Header("Settings")]
     [SerializeField] private float _stopDistance = 3f;
     [SerializeField] [Range(0, 1.5f)] private float _movementBlockDuration = 1f;
 
-    private Character _character;
-    private NavMeshAgent _navMeshAgent;
     private Transform _target;
     private Transform _transform;
     private LayerMask _targetLayer;
@@ -42,8 +44,6 @@ public class AgentMovement : MonoBehaviour
 
     private void InitFields()
     {
-        _character = GetComponent<Character>();
-        _navMeshAgent = GetComponent<NavMeshAgent>();
         _transform = transform;
     }
 
@@ -72,7 +72,9 @@ public class AgentMovement : MonoBehaviour
     {
         var raycast = Physics.Raycast(_transform.position, _transform.forward, out var hit);
         if (raycast)
-            if (!_isMovementBlocked && hit.collider.gameObject.layer == _targetLayer && hit.distance < _stopDistance)
+            if (!_isMovementBlocked 
+                && hit.collider.gameObject.layer == _targetLayer 
+                && hit.distance < _stopDistance)
             {
                 StartCoroutine(BlockMovement());
                 return true;
