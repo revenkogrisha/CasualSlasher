@@ -20,16 +20,13 @@ public class CharacterFactory : MonoBehaviour
 
     private Character TrySetupMovement(Character character, Transform target)
     {
-        var agentMovement = character.GetComponent<AgentMovement>();
-        if (!agentMovement)
-        {
-            Debug.Log("AgentMovement lost");
+        if (!character.TryGetComponent<AgentMovement>(out var agentMovement))
             return character;
-        }
 
         agentMovement.SetTarget(target);
         agentMovement.ApplyTargetLayer();
         agentMovement.ApplySpeed();
+
         return character;
     }
 }
