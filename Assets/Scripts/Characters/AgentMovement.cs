@@ -8,11 +8,13 @@ public class AgentMovement : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Character _character;
     [SerializeField] private NavMeshAgent _navMeshAgent;
+    [SerializeField] private Animator _animator;
 
     [Header("Settings")]
     [SerializeField] private float _stopDistance = 3f;
     [SerializeField] [Range(0, 1.5f)] private float _movementBlockDuration = 1f;
 
+    private CharacterAnimator _characterAnimator;
     private Transform _target;
     private Transform _transform;
     private LayerMask _targetLayer;
@@ -34,6 +36,18 @@ public class AgentMovement : MonoBehaviour
         StartCoroutine(Move());
     }
 
+    private void OnEnable()
+    {
+        OnMovementStarted += _characterAnimator.EnableRunning;
+        OnMovementStopped += _characterAnimator.DisableRunning;
+    }
+    
+    private void OnDisable()
+    {
+        OnMovementStarted -= _characterAnimator.EnableRunning;
+        OnMovementStopped -= _characterAnimator.DisableRunning;
+    }
+
     #endregion
 
     public void SetTarget(Transform target) => _target = target;
@@ -44,6 +58,7 @@ public class AgentMovement : MonoBehaviour
 
     private void InitFields()
     {
+        _characterAnimator = new(_animator);
         _transform = transform;
     }
 
@@ -68,19 +83,18 @@ public class AgentMovement : MonoBehaviour
         _navMeshAgent.SetDestination(_target.position);
     }
 
-    private bool TryStopInFrontOfTarget()
+    private void TryStopInFrontOfTarget()
     {
         var raycast = Physics.Raycast(_transform.position, _transform.forward, out var hit);
-        if (raycast)
-            if (!_isMovementBlocked 
-                && hit.collider.gameObject.layer == _targetLayer 
-                && hit.distance < _stopDistance)
-            {
-                StartCoroutine(BlockMovement());
-                return true;
-            }
+        if (!raycast)
+            return;
 
-        return false;
+        if (_isMovementBlocked
+            || hit.collider.gameObject.layer != _targetLayer
+            || hit.distance >= _stopDistance)
+            return;
+
+        StartCoroutine(BlockMovement());
     }
 
     private IEnumerator BlockMovement()
