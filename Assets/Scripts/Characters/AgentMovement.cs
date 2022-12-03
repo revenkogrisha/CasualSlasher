@@ -15,7 +15,7 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] [Range(0, 1.5f)] private float _movementBlockDuration = 1f;
 
     private CharacterAnimator _characterAnimator;
-    private Transform _target;
+    private AgentTarget _target;
     private Transform _transform;
     private LayerMask _targetLayer;
     private bool _isMovementBlocked = false;
@@ -50,7 +50,7 @@ public class AgentMovement : MonoBehaviour
 
     #endregion
 
-    public void SetTarget(Transform target) => _target = target;
+    public void SetTarget(AgentTarget target) => _target = target;
 
     public void ApplyTargetLayer() => _targetLayer = _target.gameObject.layer;
 
@@ -80,7 +80,9 @@ public class AgentMovement : MonoBehaviour
         if (!_target)
             return;
 
-        _navMeshAgent.SetDestination(_target.position);
+        var targetTransform = _target.transform;
+        var targetPosition = targetTransform.position;
+        _navMeshAgent.SetDestination(targetPosition);
     }
 
     private void TryStopInFrontOfTarget()
