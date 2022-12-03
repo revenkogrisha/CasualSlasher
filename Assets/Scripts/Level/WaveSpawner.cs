@@ -8,14 +8,14 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] private GroundCheck _groundCheck;
 
     [Header("Characters")]
+    [SerializeField] private Character _characterPrefab;
     [Tooltip("Set if factory uses NavMesh or demands it")]
     [SerializeField] private AgentTarget _target;
     [SerializeField] private StatsConfig _statsConfig;
 
-    [SerializeField] private Character _characterPrefab;
+    [Header("Spawn settings")]
+    [Tooltip("Transform that characters would be spawned around")]
     [SerializeField] private Transform _originTransform;
-
-    [Header("Settings")]
     [SerializeField] [Range(0f, 20f)] private float _spawnRadius = 15f;
     [SerializeField] [Range(0, 4)] private int _countInGroup = 3;
 
