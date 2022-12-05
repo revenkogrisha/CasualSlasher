@@ -8,7 +8,7 @@ public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     private float _platformLength = 30f;
     private float _spawnOffset = 0f;
 
-    public void Generate()
+    public void GenerateSurface()
     {
         for (var i = 0; i < _platformsPerLevel; i++)
             SpawnRandomPlatform();
