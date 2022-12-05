@@ -4,8 +4,9 @@ using UnityTools;
 [RequireComponent(typeof(Timer))]
 public class WaveSpawner : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] private GroundCheck _groundCheck;
+    [Header("Ground Check")]
+    [Tooltip("Choose what should be defined as ground. Characters won't spawn on other layers")]
+    [SerializeField] private LayerMask _groundLayer;
 
     [Header("Characters")]
     [SerializeField] private Character _characterPrefab;
@@ -20,25 +21,17 @@ public class WaveSpawner : MonoBehaviour
     [SerializeField] [Range(0, 4)] private int _countInGroup = 3;
 
     private ICharacterFactory _factory;
+    private GroundCheck _groundCheck;
     private Timer _timer;
+    private readonly float _checkGroundRadius = 1.2f;
 
     #region MonoBehaviour
 
-    private void Awake()
-    {
-        _factory = new AgentCharacterFactory(_target);
-        _timer = GetComponent<Timer>();
-    }
+    private void Awake() => InitFields();
 
-    private void OnEnable()
-    {
-        _timer.OnCooldownPassed += SpawnRandomWave;
-    }
+    private void OnEnable() => _timer.OnCooldownPassed += SpawnRandomWave;
 
-    private void OnDisable()
-    {
-        _timer.OnCooldownPassed -= SpawnRandomWave;
-    }
+    private void OnDisable() => _timer.OnCooldownPassed -= SpawnRandomWave;
 
     #endregion
 
@@ -48,13 +41,20 @@ public class WaveSpawner : MonoBehaviour
         while (i < _countInGroup)
         {
             var spawnPosition = GetPositionInCircle(_originTransform.position, _spawnRadius);
-            if (!_groundCheck.CheckGroundOnPosition(spawnPosition))
+            if (!_groundCheck.CheckGroundOnPosition(spawnPosition, _checkGroundRadius))
                 continue;
 
             SpawnUnit(spawnPosition);
 
             i++;
         }
+    }
+
+    private void InitFields()
+    {
+        _factory = new AgentCharacterFactory(_target);
+        _groundCheck = new(_groundLayer);
+        _timer = GetComponent<Timer>();
     }
 
     private void SpawnUnit(Vector3 spawnPosition)
