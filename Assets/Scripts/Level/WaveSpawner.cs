@@ -51,13 +51,18 @@ public class WaveSpawner : MonoBehaviour
             if (!_groundCheck.CheckGroundOnPosition(spawnPosition))
                 continue;
 
-            var character = Instantiate(_characterPrefab, spawnPosition, Quaternion.identity);
-
-            character = _factory.InitStats(character, _statsConfig);
-            character = TrySetupMovement(character, _factory);
+            SpawnUnit(spawnPosition);
 
             i++;
         }
+    }
+
+    private void SpawnUnit(Vector3 spawnPosition)
+    {
+        var character = Instantiate(_characterPrefab, spawnPosition, Quaternion.identity);
+
+        character = _factory.InitStats(character, _statsConfig);
+        character = TrySetupMovement(character, _factory);
     }
 
     private Vector3 GetPositionInCircle(Vector3 center, float radius)
