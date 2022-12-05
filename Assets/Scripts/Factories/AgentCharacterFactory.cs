@@ -1,6 +1,6 @@
 public class AgentCharacterFactory : IMoveableCharacterFactory
 {
-    private AgentTarget _target;
+    private readonly AgentTarget _target;
 
     public AgentCharacterFactory(AgentTarget target)
     {

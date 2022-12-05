@@ -18,8 +18,8 @@ public class AgentMovement : MonoBehaviour
     private AgentTarget _target;
     private Transform _transform;
     private LayerMask _targetLayer;
-    private bool _isMovementBlocked = false;
-    private float _moveUpdateInterval = 0.1f;
+    private readonly bool _isMovementBlocked = false;
+    private readonly float _moveUpdateInterval = 0.1f;
 
     public event Action OnMovementStarted;
     public event Action OnMovementStopped;
@@ -30,8 +30,7 @@ public class AgentMovement : MonoBehaviour
     {
         InitFields();
 
-        if (!_navMeshAgent.isOnNavMesh)
-            Destroy(gameObject);
+        CheckIfIsOnNavMesh();
 
         StartCoroutine(Move());
     }
@@ -60,6 +59,12 @@ public class AgentMovement : MonoBehaviour
     {
         _characterAnimator = new(_animator);
         _transform = transform;
+    }
+
+    private void CheckIfIsOnNavMesh()
+    {
+        if (!_navMeshAgent.isOnNavMesh)
+            Destroy(gameObject);
     }
 
     private IEnumerator Move()
