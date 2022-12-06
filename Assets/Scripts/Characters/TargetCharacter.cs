@@ -1,1 +1,0 @@
-public class TargetCharacter : CharacterAwakeInit { }
