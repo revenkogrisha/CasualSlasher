@@ -41,7 +41,8 @@ public class WaveSpawner : MonoBehaviour
         while (i < _countInGroup)
         {
             var spawnPosition = GetPositionInCircle(_originTransform.position, _spawnRadius);
-            if (!_groundCheck.CheckGroundOnPosition(spawnPosition, _checkGroundRadius))
+            var isOnGround = _groundCheck.CheckGroundOnPosition(spawnPosition, _checkGroundRadius);
+            if (!isOnGround)
                 continue;
 
             SpawnUnit(spawnPosition);
