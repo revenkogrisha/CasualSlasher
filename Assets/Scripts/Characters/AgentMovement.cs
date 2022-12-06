@@ -14,11 +14,11 @@ public class AgentMovement : MonoBehaviour
     [SerializeField] private float _stopDistance = 3f;
     [SerializeField] [Range(0, 1.5f)] private float _movementBlockDuration = 1f;
 
-    private CharacterAnimator _characterAnimator;
+    private MovementAnimator _characterAnimator;
     private AgentTarget _target;
     private Transform _transform;
     private LayerMask _targetLayer;
-    private readonly bool _isMovementBlocked = false;
+    private bool _isMovementBlocked = false;
     private readonly float _moveUpdateInterval = 0.1f;
 
     public event Action OnMovementStarted;
@@ -71,10 +71,10 @@ public class AgentMovement : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(_moveUpdateInterval);
-
             TrySetDestination();
             TryInvokeMovementEvents();
+
+            yield return new WaitForSeconds(_moveUpdateInterval);
         }
     }
 
