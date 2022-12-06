@@ -12,7 +12,7 @@ public class RelativeMovement : MonoBehaviour, IMoveable
     [SerializeField] private float _rotationSpeed = 10f;
 
     private Transform _transform;
-    private CharacterAnimator _characterAnimator;
+    private MovementAnimator _characterAnimator;
 
     public event Action OnRunStarted;
     public event Action OnRunEnded;
