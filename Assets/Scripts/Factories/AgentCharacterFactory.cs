@@ -7,7 +7,8 @@ public class AgentCharacterFactory : CharacterFactory, IMoveableCharacterFactory
         _target = target;
     }
 
-    public Character SetupMovement(Character character)
+    public T SetupMovement<T>(T character)
+        where T : Character
     {
         if (!character.TryGetComponent<AgentMovement>(out var agentMovement))
             return character;
