@@ -7,7 +7,6 @@ public class LevelGenerator
     private ISurfaceGenerator _surfaceGenerator;
     private INavMeshSurfaceGenerator _navGenerator;
     private CharacterSpawner _characterSpawner;
-    private NavMeshSurface _navSurface;
     private PlayerCharacter _playerPrefab;
     private TargetCharacter _targetPrefab;
 
@@ -27,11 +26,13 @@ public class LevelGenerator
         _targetPrefab = targetPrefab;
     }
 
-    public void GenerateLevel(FinishTarget finish,
+    public void GenerateLevel(
+        FinishTarget finish,
+        NavMeshSurface navSurface,
         Vector3 playerSpawnPosition, 
         Vector3 targetSpawnPosition)
     {
-        GenerateSuface(_navSurface);
+        GenerateSuface(navSurface);
 
         var player = _characterSpawner.Spawn(_playerPrefab, playerSpawnPosition);
         OnPlayerSpawned?.Invoke(player);
