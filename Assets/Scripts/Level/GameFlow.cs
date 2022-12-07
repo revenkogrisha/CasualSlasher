@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 public class GameFlow : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameFlow : MonoBehaviour
 
     [Header("Level")]
     [SerializeField] private FinishTarget _finish;
+    [SerializeField] private NavMeshSurface _navSurface;
     [SerializeField] private Vector3 _playerSpawnPosition = Vector3.forward;
     [SerializeField] private Vector3 _targetSpawnPosition = Vector3.zero;
     [SerializeField] private Platform[] _platforms;
@@ -43,7 +45,11 @@ public class GameFlow : MonoBehaviour
     }
 
     private void Start() =>
-        _levelGenerator.GenerateLevel(_finish, _playerSpawnPosition, _targetSpawnPosition);
+        _levelGenerator.GenerateLevel(
+            _finish,
+            _navSurface,
+            _playerSpawnPosition,
+            _targetSpawnPosition);
 
     private void Update() => TryMovePlayer();
 
