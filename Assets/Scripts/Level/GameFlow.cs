@@ -9,6 +9,7 @@ public class GameFlow : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private Joystick _joystick;
+    [SerializeField] private OrbitCamera _orbitCamera;
 
     [Header("Prefabs")]
     [SerializeField] private PlayerCharacter _playerPrefab;
@@ -19,7 +20,6 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private NavMeshSurface _navSurface;
     [SerializeField] private Vector3 _playerSpawnPosition = Vector3.forward;
     [SerializeField] private Vector3 _targetSpawnPosition = Vector3.zero;
-    [SerializeField] private Platform[] _platforms;
         
     private LevelGenerator _levelGenerator;
     private PlayerJoystickInput _playerInput;
@@ -37,11 +37,13 @@ public class GameFlow : MonoBehaviour
     private void OnEnable()
     {
         _levelGenerator.OnPlayerSpawned += TrySetupPlayerInput;
+        _levelGenerator.OnPlayerSpawned += SetupCamera;
     }
     
     private void OnDisable()
     {
         _levelGenerator.OnPlayerSpawned -= TrySetupPlayerInput;
+        _levelGenerator.OnPlayerSpawned -= SetupCamera;
     }
 
     private void Start() =>
@@ -61,6 +63,15 @@ public class GameFlow : MonoBehaviour
             throw new System.Exception("No RelativeMovement.cs has been found on Player!");
 
         _playerInput = new(_joystick, movement);
+    }
+
+    private void SetupCamera(PlayerCharacter player)
+    {
+        var playerTransform = player.transform;
+        _orbitCamera.SetTarget(playerTransform);
+
+        var playerPosition = playerTransform.position;
+        _orbitCamera.Init(playerPosition);
     }
 
     private void TryMovePlayer() => _playerInput.Move();
