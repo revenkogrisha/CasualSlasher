@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class PlayerJoystickInput : MonoBehaviour
+public class PlayerJoystickInput
 {
-    [SerializeField] private Joystick _joystick;
-    [SerializeField] private IMoveable[] _moveables;
+    private Joystick _joystick;
+    private RelativeMovement _movement;
 
-    private void Update() => Move(_moveables);
+    public PlayerJoystickInput(Joystick joystick, RelativeMovement movement)
+    {
+        _joystick = joystick;
+        _movement = movement;
+    }
 
-    private void Move(IMoveable[] moveables)
+    public void Move()
     {
         var movement = GetMovementVector();
-        foreach (var moveable in moveables)
-            moveable.TryMove(movement);
+        _movement.TryMove(movement);
     }
 
     private Vector3 GetMovementVector() => new Vector3(
