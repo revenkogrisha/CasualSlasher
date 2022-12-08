@@ -16,7 +16,6 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private TargetCharacter _targetPrefab;
 
     [Header("Level")]
-    [SerializeField] private FinishTarget _finish;
     [SerializeField] private NavMeshSurface _navSurface;
     [SerializeField] private Vector3 _playerSpawnPosition = Vector3.forward;
     [SerializeField] private Vector3 _targetSpawnPosition = Vector3.zero;
@@ -47,12 +46,7 @@ public class GameFlow : MonoBehaviour
         _levelGenerator.OnPlayerSpawned -= InitCamera;
     }
 
-    private void Start() =>
-        _levelGenerator.GenerateLevel(
-            _finish,
-            _navSurface,
-            _playerSpawnPosition,
-            _targetSpawnPosition);
+    private void Start() => GenerateLevel(_levelGenerator);
 
     private void Update() => TryMovePlayer();
 
@@ -73,6 +67,14 @@ public class GameFlow : MonoBehaviour
         var playerTransform = player.transform;
         var playerPosition = playerTransform.position;
         _orbitCamera = new(_camera, playerTransform, playerPosition);
+    }
+
+    private void GenerateLevel(LevelGenerator generator)
+    {
+        generator.GenerateLevel(
+            _navSurface,
+            _playerSpawnPosition,
+            _targetSpawnPosition);
     }
 
     private void TryMovePlayer() => _playerInput.Move();
