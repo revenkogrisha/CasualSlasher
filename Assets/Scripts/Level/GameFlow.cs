@@ -10,6 +10,7 @@ public class GameFlow : MonoBehaviour
     [Header("Player")]
     [SerializeField] private Joystick _joystick;
     [SerializeField] private OrbitCamera _orbitCamera;
+    [SerializeField] private Camera _camera;
 
     [Header("Prefabs")]
     [SerializeField] private PlayerCharacter _playerPrefab;
@@ -55,6 +56,8 @@ public class GameFlow : MonoBehaviour
 
     private void Update() => TryMovePlayer();
 
+    private void LateUpdate() => _orbitCamera.TryApplyCameraTransform();
+
     #endregion
 
     private void TrySetupPlayerInput(PlayerCharacter player)
@@ -71,7 +74,8 @@ public class GameFlow : MonoBehaviour
         _orbitCamera.SetTarget(playerTransform);
 
         var playerPosition = playerTransform.position;
-        _orbitCamera.Init(playerPosition);
+        var cameraTransform = _camera.transform;
+        _orbitCamera.Init(cameraTransform, playerPosition);
     }
 
     private void TryMovePlayer() => _playerInput.Move();

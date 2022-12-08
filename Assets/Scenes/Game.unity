@@ -254,8 +254,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e89fb33cc5d37b4e98106f697b9c3f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _target: {fileID: 0}
-  _cameraOffset: {x: 0, y: 4, z: -10}
 --- !u!1 &387864328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,13 +1057,14 @@ MonoBehaviour:
   _characterSpawner: {fileID: 1980677731}
   _joystick: {fileID: 1014588846}
   _orbitCamera: {fileID: 330585548}
+  _camera: {fileID: 330585545}
   _playerPrefab: {fileID: 8663572152975052681, guid: 2c239dec41555004fa47f6464f1e3f9b,
     type: 3}
   _targetPrefab: {fileID: 7255231540233524176, guid: 00ea32f6ee47e0044a3d5a528f7d41fd,
     type: 3}
   _finish: {fileID: 387864330}
   _navSurface: {fileID: 1980677728}
-  _playerSpawnPosition: {x: 0, y: 0, z: 1}
+  _playerSpawnPosition: {x: 0, y: 0, z: 5}
   _targetSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1980677731
 MonoBehaviour:
