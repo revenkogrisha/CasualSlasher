@@ -1,19 +1,16 @@
 using UnityEngine;
 
-public class OrbitCamera : MonoBehaviour
+public class OrbitCamera
 {
     private Transform _target;
     private Transform _transform;
     private Vector3 _cameraOffset = new(0f, 4f, -10f);
     private Vector3 _distanceToTarget;
 
-    public void SetTarget(Transform target) => _target = target;
-
-    public void Init(Transform transform, Vector3 playerPosition)
+    public OrbitCamera(Camera camera, Transform target, Vector3 playerPosition)
     {
-        _transform = transform;
-        if (!_target)
-            throw new System.Exception("Target field is unassigned!");
+        _transform = camera.transform;
+        _target = target;
 
         SetPosition(playerPosition);
         _distanceToTarget = _target.position - _transform.position;

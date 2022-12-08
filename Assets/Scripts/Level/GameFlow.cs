@@ -9,7 +9,6 @@ public class GameFlow : MonoBehaviour
 
     [Header("Player")]
     [SerializeField] private Joystick _joystick;
-    [SerializeField] private OrbitCamera _orbitCamera;
     [SerializeField] private Camera _camera;
 
     [Header("Prefabs")]
@@ -22,6 +21,7 @@ public class GameFlow : MonoBehaviour
     [SerializeField] private Vector3 _playerSpawnPosition = Vector3.forward;
     [SerializeField] private Vector3 _targetSpawnPosition = Vector3.zero;
         
+    private OrbitCamera _orbitCamera;
     private LevelGenerator _levelGenerator;
     private PlayerJoystickInput _playerInput;
 
@@ -38,13 +38,13 @@ public class GameFlow : MonoBehaviour
     private void OnEnable()
     {
         _levelGenerator.OnPlayerSpawned += TrySetupPlayerInput;
-        _levelGenerator.OnPlayerSpawned += SetupCamera;
+        _levelGenerator.OnPlayerSpawned += InitCamera;
     }
     
     private void OnDisable()
     {
         _levelGenerator.OnPlayerSpawned -= TrySetupPlayerInput;
-        _levelGenerator.OnPlayerSpawned -= SetupCamera;
+        _levelGenerator.OnPlayerSpawned -= InitCamera;
     }
 
     private void Start() =>
@@ -68,14 +68,11 @@ public class GameFlow : MonoBehaviour
         _playerInput = new(_joystick, movement);
     }
 
-    private void SetupCamera(PlayerCharacter player)
+    private void InitCamera(PlayerCharacter player)
     {
         var playerTransform = player.transform;
-        _orbitCamera.SetTarget(playerTransform);
-
         var playerPosition = playerTransform.position;
-        var cameraTransform = _camera.transform;
-        _orbitCamera.Init(cameraTransform, playerPosition);
+        _orbitCamera = new(_camera, playerTransform, playerPosition);
     }
 
     private void TryMovePlayer() => _playerInput.Move();
