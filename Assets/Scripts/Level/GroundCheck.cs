@@ -1,17 +1,20 @@
 using UnityEngine;
 
-public class GroundCheck
+namespace SaveTheGuy.Level
 {
-    private readonly LayerMask _groundLayer;
-
-    public GroundCheck(LayerMask groundLayer)
+    public class GroundCheck
     {
-        _groundLayer = groundLayer;
+        private readonly LayerMask _groundLayer;
+
+        public GroundCheck(LayerMask groundLayer)
+        {
+            _groundLayer = groundLayer;
+        }
+
+        public bool CheckGroundOnPosition(Vector3 position, float checkRadius) =>
+            Physics.CheckSphere(position, checkRadius, _groundLayer);
+
+        public bool CheckGroundOnPosition(Vector3 position, float checkRadius, LayerMask groundLayer) =>
+            Physics.CheckSphere(position, checkRadius, groundLayer);
     }
-
-    public bool CheckGroundOnPosition(Vector3 position, float checkRadius) =>
-        Physics.CheckSphere(position, checkRadius, _groundLayer);
-
-    public bool CheckGroundOnPosition(Vector3 position, float checkRadius, LayerMask groundLayer) =>
-        Physics.CheckSphere(position, checkRadius, groundLayer);
 }
