@@ -24,7 +24,6 @@ namespace SaveTheGuy.Level
         
         private OrbitCamera _orbitCamera;
         private LevelGenerator _levelGenerator;
-        private PlayerJoystickInput _playerInput;
 
         #region MonoBehaviour
 
@@ -38,13 +37,11 @@ namespace SaveTheGuy.Level
 
         private void OnEnable()
         {
-            _levelGenerator.OnPlayerSpawned += TrySetupPlayerInput;
             _levelGenerator.OnPlayerSpawned += InitCamera;
         }
     
         private void OnDisable()
         {
-            _levelGenerator.OnPlayerSpawned -= TrySetupPlayerInput;
             _levelGenerator.OnPlayerSpawned -= InitCamera;
         }
 
@@ -53,21 +50,12 @@ namespace SaveTheGuy.Level
             GenerateLevel(_levelGenerator);
         }
 
-        private void Update()
+        private void LateUpdate()
         {
-            TryMovePlayer(_playerInput);
             _orbitCamera.TryApplyCameraTransform();
         }
 
         #endregion
-
-        private void TrySetupPlayerInput(PlayerCharacter player)
-        {
-            if (!player.TryGetComponent<RelativeMovement>(out var movement))
-                throw new System.Exception("No RelativeMovement.cs has been found on Player!");
-
-            _playerInput = new(_joystick, movement);
-        }
 
         private void InitCamera(PlayerCharacter player)
         {
@@ -82,7 +70,5 @@ namespace SaveTheGuy.Level
                 _navSurface,
                 _playerSpawnPosition);
         }
-
-        private void TryMovePlayer(PlayerJoystickInput input) => input.Move();
     }
 }
