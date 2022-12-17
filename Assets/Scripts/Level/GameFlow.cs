@@ -17,12 +17,10 @@ namespace SaveTheGuy.Level
 
         [Header("Prefabs")]
         [SerializeField] private PlayerCharacter _playerPrefab;
-        [SerializeField] private TargetCharacter _targetPrefab;
 
         [Header("Level")]
         [SerializeField] private NavMeshSurface _navSurface;
         [SerializeField] private Vector3 _playerSpawnPosition = Vector3.forward;
-        [SerializeField] private Vector3 _targetSpawnPosition = Vector3.zero;
         
         private OrbitCamera _orbitCamera;
         private LevelGenerator _levelGenerator;
@@ -32,10 +30,10 @@ namespace SaveTheGuy.Level
 
         private void Awake()
         {
-            _levelGenerator = new(_platformGenerator,
+            _levelGenerator = new(
+                _platformGenerator,
                 _characterSpawner, 
-                _playerPrefab, 
-                _targetPrefab);
+                _playerPrefab);
         }
 
         private void OnEnable()
@@ -50,11 +48,16 @@ namespace SaveTheGuy.Level
             _levelGenerator.OnPlayerSpawned -= InitCamera;
         }
 
-        private void Start() => GenerateLevel(_levelGenerator);
+        private void Start()
+        {
+            GenerateLevel(_levelGenerator);
+        }
 
-        private void Update() => TryMovePlayer();
-
-        private void LateUpdate() => _orbitCamera.TryApplyCameraTransform();
+        private void Update()
+        {
+            TryMovePlayer(_playerInput);
+            _orbitCamera.TryApplyCameraTransform();
+        }
 
         #endregion
 
@@ -77,10 +80,9 @@ namespace SaveTheGuy.Level
         {
             generator.GenerateLevel(
                 _navSurface,
-                _playerSpawnPosition,
-                _targetSpawnPosition);
+                _playerSpawnPosition);
         }
 
-        private void TryMovePlayer() => _playerInput.Move();
+        private void TryMovePlayer(PlayerJoystickInput input) => input.Move();
     }
 }
