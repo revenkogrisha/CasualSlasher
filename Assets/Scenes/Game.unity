@@ -568,6 +568,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830363575}
+  - component: {fileID: 830363576}
   m_Layer: 0
   m_Name: Level
   m_TagString: Untagged
@@ -591,6 +592,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &830363576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 830363574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b833c2fc654d6f4ba3a1953ef693a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,11 +1014,8 @@ MonoBehaviour:
   _camera: {fileID: 330585545}
   _playerPrefab: {fileID: 8663572152975052681, guid: 2c239dec41555004fa47f6464f1e3f9b,
     type: 3}
-  _targetPrefab: {fileID: 7255231540233524176, guid: 00ea32f6ee47e0044a3d5a528f7d41fd,
-    type: 3}
   _navSurface: {fileID: 1980677728}
   _playerSpawnPosition: {x: 0, y: 0, z: 5}
-  _targetSpawnPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &1980677731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1033,7 +1043,8 @@ MonoBehaviour:
   _finishPlatformPrefab: {fileID: 529033114492968441, guid: 320bcf6fb60def740b580d822b923f31,
     type: 3}
   _platformsPrefabs:
-  - {fileID: -6961551687433552585, guid: 13a51b9ada385d24694f7bf1064a8604, type: 3}
+  - {fileID: 8214008532344157674, guid: 13a51b9ada385d24694f7bf1064a8604, type: 3}
+  _parent: {fileID: 830363576}
   _platformsPerLevel: 3
 --- !u!1 &1996777551
 GameObject:
