@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SaveTheGuy.Control
 {
-    public class PlayerMovement : MonoBehaviour, IMoveable
+    public class PlayerMovement : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
@@ -54,7 +54,7 @@ namespace SaveTheGuy.Control
 
         public void TryMove(Vector3 movement)
         {
-            if (CheckIsStationary(movement))
+            if (CheckIfStationary(movement))
             {
                 OnRunEnded?.Invoke();
                 return;
@@ -73,21 +73,8 @@ namespace SaveTheGuy.Control
             return movement;
         }
 
-        private bool CheckIsStationary(Vector3 movement)
+        private bool CheckIfStationary(Vector3 movement)
             => movement.x == 0 && movement.z == 0;
-
-        private void ApplyBodyDirection(Vector3 movement)
-        {
-            if (movement == Vector3.zero)
-                return;
-
-            var direction = Quaternion.LookRotation(movement);
-
-            _transform.rotation = Quaternion.Lerp(
-                _transform.rotation,
-                direction,
-                _forwardSpeed * Time.deltaTime);
-        }
 
         private Vector3 ApplyGravity(Vector3 movement)
         {
