@@ -38,11 +38,13 @@ namespace SaveTheGuy.Level
         private void OnEnable()
         {
             _levelGenerator.OnPlayerSpawned += InitCamera;
+            _levelGenerator.OnPlayerSpawned += InitPlayerMovement;
         }
     
         private void OnDisable()
         {
             _levelGenerator.OnPlayerSpawned -= InitCamera;
+            _levelGenerator.OnPlayerSpawned -= InitPlayerMovement;
         }
 
         private void Start()
@@ -62,6 +64,14 @@ namespace SaveTheGuy.Level
             var playerTransform = player.transform;
             var playerPosition = playerTransform.position;
             _orbitCamera = new(_camera, playerTransform, playerPosition);
+        }
+
+        private void InitPlayerMovement(PlayerCharacter player)
+        {
+            if (!player.TryGetComponent<PlayerMovement>(out var movement))
+                throw new System.Exception("No PlayerMovement was found on Player");
+
+            movement.Init(_joystick);
         }
 
         private void GenerateLevel(LevelGenerator generator)
