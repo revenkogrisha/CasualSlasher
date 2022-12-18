@@ -29,7 +29,7 @@ namespace SaveTheGuy.Level
             NavMeshSurface navSurface,
             Vector3 playerSpawnPosition)
         {
-            var finish = GenerateSuface(navSurface);
+            GenerateSuface(navSurface);
 
             SpawnPlayer(playerSpawnPosition);
         }

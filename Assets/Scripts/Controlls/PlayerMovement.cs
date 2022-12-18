@@ -16,9 +16,9 @@ namespace SaveTheGuy.Control
         [Tooltip("Needed for clamping horizontal & forward speed")]
         [SerializeField] [Range(0f, 10f)] private float _maxSpeed = 5f;
 
-        private Transform _transform;
         private MovementAnimator _characterAnimator;
         private PlayerInput _input;
+        private Joystick _joystick;
 
         public event Action OnRunStarted;
         public event Action OnRunEnded;
@@ -29,7 +29,6 @@ namespace SaveTheGuy.Control
         {
             _characterAnimator = new(_animator);
             _input = new();
-            _transform = transform;
         }
 
         private void OnEnable()
@@ -52,6 +51,8 @@ namespace SaveTheGuy.Control
 
         #endregion
 
+        public void Init(Joystick joystick) => _joystick = joystick;
+
         public void TryMove(Vector3 movement)
         {
             if (CheckIfStationary(movement))
@@ -68,7 +69,7 @@ namespace SaveTheGuy.Control
 
         private Vector3 GetVectorWithSpeed(PlayerInput input)
         {
-            var movement = input.GetMovementVector(_forwardSpeed, _horizontalSpeed);
+            var movement = input.GetMovementVector(_joystick, _forwardSpeed, _horizontalSpeed);
             movement = Vector3.ClampMagnitude(movement, _maxSpeed);
             return movement;
         }
