@@ -1,4 +1,4 @@
-namespace ColorManRun.Level
+namespace SaveTheGuy.Level
 {
     public class SimplePlatform : Platform { }
 }

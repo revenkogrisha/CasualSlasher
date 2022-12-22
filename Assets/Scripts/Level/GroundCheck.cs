@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.Level
+namespace SaveTheGuy.Level
 {
     public class GroundCheck
     {

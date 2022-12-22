@@ -1,9 +1,9 @@
-using ColorManRun.Characters;
-using ColorManRun.Control;
+using SaveTheGuy.Characters;
+using SaveTheGuy.Control;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ColorManRun.Generators
+namespace SaveTheGuy.Generators
 {
     public class GameStart : MonoBehaviour
     {

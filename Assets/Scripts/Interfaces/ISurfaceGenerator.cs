@@ -1,6 +1,6 @@
-using ColorManRun.Level;
+using SaveTheGuy.Level;
 
-namespace ColorManRun.Generators
+namespace SaveTheGuy.Generators
 {
     public interface ISurfaceGenerator
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ColorManRun.Characters
+namespace SaveTheGuy.Characters
 {
     public class AgentMovement : MonoBehaviour
     {

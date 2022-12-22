@@ -1,7 +1,7 @@
-using ColorManRun.Level;
+using SaveTheGuy.Level;
 using UnityEngine;
 
-namespace ColorManRun.Generators
+namespace SaveTheGuy.Generators
 {
     public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     {
