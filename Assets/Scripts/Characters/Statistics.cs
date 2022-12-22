@@ -1,4 +1,4 @@
-namespace ColorManRun.Characters
+namespace SaveTheGuy.Characters
 {
     public struct Statistics
     {

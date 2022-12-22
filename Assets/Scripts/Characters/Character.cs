@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace ColorManRun.Characters
+namespace SaveTheGuy.Characters
 {
     public class Character : MonoBehaviour
     {

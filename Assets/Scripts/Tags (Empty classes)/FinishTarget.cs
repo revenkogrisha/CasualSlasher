@@ -1,6 +1,6 @@
-using ColorManRun.Characters;
+using SaveTheGuy.Characters;
 
-namespace ColorManRun.Level
+namespace SaveTheGuy.Level
 {
     public class FinishTarget : AgentTarget { }
 }

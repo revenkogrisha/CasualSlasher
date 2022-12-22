@@ -1,8 +1,8 @@
-using ColorManRun.Characters;
+using SaveTheGuy.Characters;
 using System;
 using UnityEngine;
 
-namespace ColorManRun.Control
+namespace SaveTheGuy.Control
 {
     public class PlayerMovement : MonoBehaviour
     {

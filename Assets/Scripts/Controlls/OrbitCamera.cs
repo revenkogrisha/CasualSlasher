@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.Control
+namespace SaveTheGuy.Control
 {
     public class OrbitCamera : MonoBehaviour
     {

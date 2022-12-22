@@ -1,6 +1,6 @@
-using ColorManRun.Characters;
+using SaveTheGuy.Characters;
 
-namespace ColorManRun.Factories
+namespace SaveTheGuy.Factories
 {
     public class CharacterFactory : ICharacterFactory
     {
