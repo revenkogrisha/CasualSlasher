@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace SaveTheGuy.Level
 {
-    public class GameFlow : MonoBehaviour
+    public class GameStart : MonoBehaviour
     {
         [Header("Components")]
         [SerializeField] private PlatformGenerator _platformGenerator;
