@@ -1,9 +1,10 @@
 using SaveTheGuy.Characters;
+using SaveTheGuy.Level;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace SaveTheGuy.Level
+namespace SaveTheGuy.Generators
 {
     public class LevelGenerator
     {

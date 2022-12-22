@@ -1,9 +1,10 @@
 using SaveTheGuy.Characters;
 using SaveTheGuy.Factories;
+using SaveTheGuy.Level;
 using UnityEngine;
 using UnityTools;
 
-namespace SaveTheGuy.Level
+namespace SaveTheGuy.Generators
 {
     [RequireComponent(typeof(Timer))]
     public class WaveSpawner : MonoBehaviour

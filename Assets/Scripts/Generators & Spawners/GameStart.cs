@@ -3,7 +3,7 @@ using SaveTheGuy.Control;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace SaveTheGuy.Level
+namespace SaveTheGuy.Generators
 {
     public class GameStart : MonoBehaviour
     {

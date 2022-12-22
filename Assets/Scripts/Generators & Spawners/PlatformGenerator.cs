@@ -1,6 +1,7 @@
+using SaveTheGuy.Level;
 using UnityEngine;
 
-namespace SaveTheGuy.Level
+namespace SaveTheGuy.Generators
 {
     public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     {
