@@ -2,11 +2,10 @@ using SaveTheGuy.Characters;
 using SaveTheGuy.Factories;
 using UnityEngine;
 
-namespace SaveTheGuy.Level
+namespace SaveTheGuy.Generators
 {
     public class CharacterSpawner : MonoBehaviour
     {
-
         public Character Spawn(Character characterPrefab, StatsConfig config, Vector3 position)
         {
             var character = Instantiate(characterPrefab, position, Quaternion.identity);

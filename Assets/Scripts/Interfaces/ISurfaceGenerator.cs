@@ -1,4 +1,6 @@
-namespace SaveTheGuy.Level
+using SaveTheGuy.Level;
+
+namespace SaveTheGuy.Generators
 {
     public interface ISurfaceGenerator
     {
