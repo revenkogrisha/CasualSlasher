@@ -1,8 +1,8 @@
-using SaveTheGuy.Characters;
-using SaveTheGuy.Factories;
+using ColorManRun.Characters;
+using ColorManRun.Factories;
 using UnityEngine;
 
-namespace SaveTheGuy.Generators
+namespace ColorManRun.Generators
 {
     public class CharacterSpawner : MonoBehaviour
     {
