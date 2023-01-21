@@ -7,7 +7,7 @@ namespace ColorManRun.Generators
     public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     {
         [Header("Components")]
-        [SerializeField] private ColorTrioPicker _colorPicker;
+        [SerializeField] private ColorTrio _colorPicker;
 
         [Header("Platforms")]
         [SerializeField] private FirstPlatform _firstPlatformPrefab;
