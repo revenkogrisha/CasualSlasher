@@ -21,6 +21,20 @@ namespace UnityTools
             return false;
         }
 
+        public static bool InvokeIfNotNull<T>(Collider contaiter, Action<T> handler)
+        {
+            if (contaiter.GetComponent<T>() != null)
+            {
+                handler?.Invoke(
+                    contaiter.GetComponent<T>()
+                    );
+
+                return true;
+            }
+
+            return false;
+        }
+
         public static bool InvokeIfNotNull<T>(Collider2D contaiter, params Action[] handlers)
         {
             if (contaiter.GetComponent<T>() != null)
