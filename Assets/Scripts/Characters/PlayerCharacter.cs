@@ -1,5 +1,6 @@
 using ColorManRun.ColorFeatures;
 using UnityEngine;
+using UnityTools;
 
 namespace ColorManRun.Characters
 {
@@ -9,10 +10,21 @@ namespace ColorManRun.Characters
 
         private GameColor _color;
 
-        private void SetColor(GameColor color, Material material)
+        #region MonoBehaviour
+
+        private void OnTriggerEnter(Collider other)
         {
-            _color = color;
-            _renderer.material = material;
+            Tools.InvokeIfNotNull<ColorBubble>(other, TakeColorFromBubble);
+        }
+
+        #endregion
+
+        public void TakeColorFromBubble(ColorBubble bubble)
+        {
+            _color = bubble.Color;
+            _renderer.material = bubble.Material;
+
+            bubble.Burst();
         }
     }
 }
