@@ -34,6 +34,19 @@ namespace UnityTools
             return false;
         }
 
+        public static bool InvokeIfNotNull<T>(Collider contaiter, params Action[] handlers)
+        {
+            if (contaiter.GetComponent<T>() != null)
+            {
+                foreach (var handler in handlers)
+                    handler?.Invoke();
+
+                return true;
+            }
+
+            return false;
+        }
+
         public static void InvokeWithSameArgs<T>(T arg, params Action<T>[] actions)
         {
             foreach (var action in actions)
