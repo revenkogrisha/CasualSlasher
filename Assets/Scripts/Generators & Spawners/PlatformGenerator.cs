@@ -1,5 +1,6 @@
 using ColorManRun.Level;
 using ColorManRun.ColorFeatures;
+using ColorManRun.Factories;
 using UnityEngine;
 
 namespace ColorManRun.Generators
@@ -23,6 +24,16 @@ namespace ColorManRun.Generators
 
         private readonly float _platformLength = 30f;
         private float _offset = 0f;
+        private PlatformFactory _platformFactory;
+
+        #region MonoBehaviour
+
+        private void Awake()
+        {
+            _platformFactory = new(_platformsPrefabs, _colorPicker);
+        }
+
+        #endregion
 
         public FinishTarget GenerateSurface()
         {
@@ -35,11 +46,7 @@ namespace ColorManRun.Generators
 
         private void SpawnRandomPlatform()
         {
-            var randomPlatformIndex = Random.Range(0, _platformsPrefabs.Length);
-            var platform = _platformsPrefabs[randomPlatformIndex];
-
-            platform = SetPlatformColor(platform);
-
+            var platform = _platformFactory.GetRandomColorPlatform();
             SpawnPlatform(platform);
         }
 
@@ -47,15 +54,6 @@ namespace ColorManRun.Generators
         {
             var platform = SpawnPlatform(_finishPlatformPrefab);
             return GetFinishTarget(platform);
-        }
-
-        private ColorPlatform SetPlatformColor(ColorPlatform platform)
-        {
-            var color = _colorPicker.GetRandomColor();
-            var material = _colorPicker.GetMaterialByColor(color);
-
-            platform.SetColor(color, material);
-            return platform;
         }
 
         private T SpawnPlatform<T>(T prefab)
