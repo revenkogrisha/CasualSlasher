@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using ColorManRun.Level;
 using ColorManRun.ColorFeatures;
+using ColorManRun.Level;
+using UnityEngine;
 
 namespace ColorManRun.Factories
 {
@@ -19,22 +17,22 @@ namespace ColorManRun.Factories
             _colorPicker = colorPicker;
         }
 
-        public ColorPlatform GetRandomColorPlatform()
+        public ColorPlatform GetRandomColorPlatform(out GameColor color)
         {
             var randomPlatformIndex = Random.Range(0, _platformsPrefabs.Length);
             var platform = _platformsPrefabs[randomPlatformIndex];
 
-            platform = SetPlatformColor(platform);
+            color = SetPlatformColor(platform);
             return platform;
         }
 
-        private ColorPlatform SetPlatformColor(ColorPlatform platform)
+        private GameColor SetPlatformColor(ColorPlatform platform)
         {
             var color = _colorPicker.GetRandomColor();
             var material = _colorPicker.GetMaterialByColor(color);
 
             platform.SetColor(color, material);
-            return platform;
+            return color;
         }
     }
 }
