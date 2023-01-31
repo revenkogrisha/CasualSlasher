@@ -1,6 +1,6 @@
-using ColorManRun.Level;
 using ColorManRun.ColorFeatures;
 using ColorManRun.Factories;
+using ColorManRun.Level;
 using UnityEngine;
 
 namespace ColorManRun.Generators
