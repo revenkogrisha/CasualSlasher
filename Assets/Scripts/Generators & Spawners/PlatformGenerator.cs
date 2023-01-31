@@ -2,11 +2,14 @@ using ColorManRun.ColorFeatures;
 using ColorManRun.Factories;
 using ColorManRun.Level;
 using UnityEngine;
+using UnityTools;
 
 namespace ColorManRun.Generators
 {
     public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     {
+        private const int ColorBubblesAmount = 2;
+
         [Header("Components")]
         [SerializeField] private ColorTrioPicker _colorPicker;
 
@@ -19,6 +22,10 @@ namespace ColorManRun.Generators
         [Tooltip("Opional")]
         [SerializeField] private LevelObjectsParent _parent;
 
+        [Header("ColorBubbles")]
+        [SerializeField] private ColorBubble[] _colorBubbles;
+        [SerializeField] private ColorBubblesPair _colorBubblesPairPrefab;
+
         [Header("Settings")]
         [SerializeField] private int _platformsPerLevel = 3;
 
@@ -30,7 +37,9 @@ namespace ColorManRun.Generators
 
         private void Awake()
         {
-            _platformFactory = new(_platformsPrefabs, _colorPicker);
+            _platformFactory = new(
+                _platformsPrefabs,
+                _colorPicker);
         }
 
         #endregion
@@ -46,7 +55,9 @@ namespace ColorManRun.Generators
 
         private void SpawnRandomPlatform()
         {
-            var platform = _platformFactory.GetRandomColorPlatform();
+            var platform =
+                _platformFactory.GetRandomColorPlatform(out var color);
+            platform = SetColorBubbles(platform, color);
             SpawnPlatform(platform);
         }
 
@@ -54,6 +65,40 @@ namespace ColorManRun.Generators
         {
             var platform = SpawnPlatform(_finishPlatformPrefab);
             return GetFinishTarget(platform);
+        }
+
+        private ColorPlatform SetColorBubbles(ColorPlatform platform, GameColor color)
+        {
+            var bubblesPair = Instantiate(_colorBubblesPairPrefab);
+
+            ColorBubble firstBubble = null;
+            ColorBubble secondBubble = null;
+
+            int i = 0;
+            while (i < ColorBubblesAmount)
+            {
+                var random = Random.Range(0, _colorBubbles.Length);
+                var bubble = _colorBubbles[random];
+                if (bubble.Color.Equals(color))
+                    continue;
+
+                if (i == 0)
+                    firstBubble = bubble;
+                else if (i == 1)
+                    secondBubble = bubble;
+                else
+                    throw new System.Exception("Unexpected cycle iteration");
+
+                i++;
+            }
+
+            if (firstBubble == null || secondBubble == null)
+                throw new System.NullReferenceException("One of bubbles is null");
+
+            bubblesPair.Init(firstBubble, secondBubble);
+
+            platform.SetBubblesPair(bubblesPair);
+            return platform;
         }
 
         private T SpawnPlatform<T>(T prefab)
