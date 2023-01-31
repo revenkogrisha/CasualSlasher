@@ -1,7 +1,6 @@
-using ColorManRun.Characters;
-using ColorManRun.ColorFeatures;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityTools;
 
 namespace ColorManRun.ColorFeatures
 {
@@ -12,12 +11,5 @@ namespace ColorManRun.ColorFeatures
 
         public GameColor Color => _color;
         public Material Material => _material;
-
-        public void Burst()
-        {
-            Destroy(gameObject);
-
-            // Some particle effect or dotween animation
-        }
     }
 }

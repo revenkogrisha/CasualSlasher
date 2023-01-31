@@ -6,7 +6,7 @@ namespace ColorManRun.Level
     public class ColorPlatform : Platform
     {
         [SerializeField] private MeshRenderer _groundRenderer;
-        [SerializeField] private BubblesPairPosition _bubblesPairPosition;
+        [SerializeField] private Transform _bubblesPairRoot;
 
         private GameColor _color;
 
@@ -17,11 +17,11 @@ namespace ColorManRun.Level
             _color = color;
             _groundRenderer.material = material;
         }
-
-        public Vector3 GetBubblesPosition()
+        
+        public void SetBubblesPair(ColorBubblesPair colorBubblesPair)
         {
-            var position = _bubblesPairPosition.transform.position;
-            return position;
+            var bubblesTransform = colorBubblesPair.transform;
+            bubblesTransform.position = _bubblesPairRoot.transform.position;
         }
     }
 }
