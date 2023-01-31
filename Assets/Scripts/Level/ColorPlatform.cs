@@ -17,7 +17,7 @@ namespace ColorManRun.Level
             _color = color;
             _groundRenderer.material = material;
         }
-
+        
         public void SetBubblesPair(ColorBubblesPair colorBubblesPair)
         {
             var bubblesTransform = colorBubblesPair.transform;

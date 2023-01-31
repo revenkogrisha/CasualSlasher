@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ColorManRun.ColorFeatures
 {
-    public class ColorTrioPicker : MonoBehaviour
+    public class ColorTrio : MonoBehaviour
     {
         [Header("Materials")]
         [SerializeField] private Material _blue;
