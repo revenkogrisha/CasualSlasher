@@ -37,9 +37,7 @@ namespace ColorManRun.Generators
 
         private void Awake()
         {
-            _platformFactory = new(
-                _platformsPrefabs,
-                _colorPicker);
+            _platformFactory = new(_platformsPrefabs, _colorPicker);
         }
 
         #endregion
