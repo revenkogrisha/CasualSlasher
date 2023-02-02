@@ -1060,6 +1060,12 @@ MonoBehaviour:
   _platformsPrefabs:
   - {fileID: 8214008532344157674, guid: 13a51b9ada385d24694f7bf1064a8604, type: 3}
   _parent: {fileID: 830363576}
+  _colorBubbles:
+  - {fileID: 3990104156446238270, guid: d0b8aef28cc004fdda29eebac529f455, type: 3}
+  - {fileID: 101635473922051299, guid: 0d560a66b6ce34fb590649b47661b827, type: 3}
+  - {fileID: 7921240951683252474, guid: 8903d3f072cfa4850886c6d7037d6b76, type: 3}
+  _colorBubblesPairPrefab: {fileID: 960634063212502310, guid: cc1d0c21586f64738bc7cfdd69a95c2f,
+    type: 3}
   _platformsPerLevel: 5
 --- !u!114 &1980677733
 MonoBehaviour:
