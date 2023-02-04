@@ -2,7 +2,6 @@ using ColorManRun.ColorFeatures;
 using ColorManRun.Factories;
 using ColorManRun.Level;
 using UnityEngine;
-using UnityTools;
 
 namespace ColorManRun.Generators
 {
@@ -53,10 +52,9 @@ namespace ColorManRun.Generators
 
         private void SpawnRandomPlatform()
         {
-            var platform =
-                _platformFactory.GetRandomColorPlatform(out var color);
+            var platform = _platformFactory.GetRandomColorPlatform(out var color);
+            platform = SpawnPlatform(platform);
             platform = SetColorBubbles(platform, color);
-            SpawnPlatform(platform);
         }
 
         private FinishTarget SpawnFinishPlatform()
@@ -77,7 +75,11 @@ namespace ColorManRun.Generators
             {
                 var random = Random.Range(0, _colorBubbles.Length);
                 var bubble = _colorBubbles[random];
+
                 if (bubble.Color.Equals(color))
+                    continue;
+                else if (firstBubble != null
+                    && bubble.Color.Equals(firstBubble.Color))
                     continue;
 
                 if (i == 0)
@@ -94,6 +96,7 @@ namespace ColorManRun.Generators
                 throw new System.NullReferenceException("One of bubbles is null");
 
             bubblesPair.Init(firstBubble, secondBubble);
+            bubblesPair.SpawnBubblesPair();
 
             platform.SetBubblesPair(bubblesPair);
             return platform;
