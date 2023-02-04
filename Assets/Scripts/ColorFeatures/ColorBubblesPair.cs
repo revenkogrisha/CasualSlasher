@@ -18,7 +18,7 @@ namespace ColorManRun.ColorFeatures
             _secondBubble = secondBubble;
         }
 
-        private void SpawnBubblesPair()
+        public void SpawnBubblesPair()
         {
             var firstBubble = SpawnBubbleWithinPair(_firstBubble);
             var secondBubble = SpawnBubbleWithinPair(_secondBubble);
