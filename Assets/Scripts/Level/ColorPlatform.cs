@@ -21,7 +21,8 @@ namespace ColorManRun.Level
         public void SetBubblesPair(ColorBubblesPair colorBubblesPair)
         {
             var bubblesTransform = colorBubblesPair.transform;
-            bubblesTransform.position = _bubblesPairRoot.transform.position;
+            var pairPosition = _bubblesPairRoot.position;
+            bubblesTransform.position = pairPosition;
         }
     }
 }
