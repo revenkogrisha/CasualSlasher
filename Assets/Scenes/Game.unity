@@ -1001,7 +1001,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980677726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1061,6 +1061,8 @@ MonoBehaviour:
   - {fileID: 8214008532344157674, guid: 13a51b9ada385d24694f7bf1064a8604, type: 3}
   _parent: {fileID: 830363576}
   _colorBubblesPairPrefab: {fileID: 960634063212502310, guid: cc1d0c21586f64738bc7cfdd69a95c2f,
+    type: 3}
+  _colorBubblesTrioPrefab: {fileID: -6260905305177121432, guid: 08a8aeadd068b48b5b90037bfde7b6d5,
     type: 3}
   _colorBubbles:
   - {fileID: 4964306282965391665, guid: eab8b07ff48d6442f836bcb96cd17fb0, type: 3}
