@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundRenderer: {fileID: 2364164969773365376}
-  _bubblesPairRoot: {fileID: 3903030311823769083}
+  _bubblesPairRoot: {fileID: 479736328949409131}
 --- !u!1 &9125231467445493138
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3903030311823769083}
+  - component: {fileID: 479736328949409131}
   m_Layer: 0
   m_Name: BubblesPairRoot
   m_TagString: Untagged
@@ -176,3 +177,15 @@ Transform:
   m_Father: {fileID: 7366864679453621065}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &479736328949409131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9125231467445493138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abad2215044614db3a7377c3606574af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
