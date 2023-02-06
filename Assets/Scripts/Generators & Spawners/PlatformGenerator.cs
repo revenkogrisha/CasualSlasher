@@ -7,7 +7,7 @@ namespace ColorManRun.Generators
 {
     public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     {
-        private const int ColorBubblesAmount = 2;
+        public const int ColorBubblesAmount = 2;
 
         [Header("Components")]
         [SerializeField] private ColorTrioPicker _colorPicker;
@@ -23,6 +23,7 @@ namespace ColorManRun.Generators
 
         [Header("ColorBubbles")]
         [SerializeField] private ColorBubblesPair _colorBubblesPairPrefab;
+        [SerializeField] private ColorBubblesTrio _colorBubblesTrioPrefab;
         [SerializeField] private ColorBubble[] _colorBubbles;
 
         [Header("Settings")]
