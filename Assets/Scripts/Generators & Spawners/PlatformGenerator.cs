@@ -44,11 +44,19 @@ namespace ColorManRun.Generators
 
         public FinishTarget GenerateSurface()
         {
-            SpawnPlatform(_firstPlatformPrefab);
+            SpawnFirstPlatform(_firstPlatformPrefab);
             for (var i = 1; i < _platformsPerLevel - 1; i++)
                 SpawnRandomPlatform();
 
             return SpawnFinishPlatform();
+        }
+
+        private void SpawnFirstPlatform(FirstPlatform firstPlatformPrefab)
+        {
+            var firstPlatform = SpawnPlatform(firstPlatformPrefab);
+
+            var bubblesTrio = Instantiate(_colorBubblesTrioPrefab);
+            firstPlatform.SetBubblesTrio(bubblesTrio);
         }
 
         private void SpawnRandomPlatform()
