@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ColorManRun.ColorFeatures
@@ -11,5 +9,7 @@ namespace ColorManRun.ColorFeatures
 
         public GameColor Color => _color;
         public Material Material => _material;
+
+        public bool CompareColor(GameColor color) => _color.Equals(color);
     }
 }
