@@ -52,9 +52,9 @@ namespace ColorManRun.Generators
 
         private void SpawnRandomPlatform()
         {
-            var platform = _platformFactory.GetRandomColorPlatform(out var color);
+            var platform = _platformFactory.GetRandomColorPlatform(out var platformColor);
             platform = SpawnPlatform(platform);
-            platform = SetColorBubbles(platform, color);
+            platform = SetColorBubbles(platform, platformColor);
         }
 
         private FinishTarget SpawnFinishPlatform()
@@ -63,7 +63,9 @@ namespace ColorManRun.Generators
             return GetFinishTarget(platform);
         }
 
-        private ColorPlatform SetColorBubbles(ColorPlatform platform, GameColor color)
+        private ColorPlatform SetColorBubbles(
+            ColorPlatform platform,
+            GameColor currentPlatformColor)
         {
             var bubblesPair = Instantiate(_colorBubblesPairPrefab);
 
@@ -76,18 +78,25 @@ namespace ColorManRun.Generators
                 var random = Random.Range(0, _colorBubbles.Length);
                 var bubble = _colorBubbles[random];
 
-                if (bubble.Color.Equals(color))
+                if (bubble.CompareColor(currentPlatformColor))
                     continue;
                 else if (firstBubble != null
-                    && bubble.Color.Equals(firstBubble.Color))
+                    && bubble.CompareColor(firstBubble.Color))
                     continue;
 
-                if (i == 0)
-                    firstBubble = bubble;
-                else if (i == 1)
-                    secondBubble = bubble;
-                else
-                    throw new System.Exception("Unexpected cycle iteration");
+                switch (i)
+                {
+                    case 0:
+                        firstBubble = bubble;
+                        break;
+
+                    case 1:
+                        secondBubble = bubble;
+                        break;
+
+                    default:
+                        throw new System.Exception("Unexpected cycle iteration");
+                }
 
                 i++;
             }
