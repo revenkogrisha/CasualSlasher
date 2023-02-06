@@ -10,7 +10,7 @@ namespace ColorManRun.Generators
         private const int ColorBubblesAmount = 2;
 
         [Header("Components")]
-        [SerializeField] private ColorTrio _colorPicker;
+        [SerializeField] private ColorTrioPicker _colorPicker;
 
         [Header("Platforms")]
         [SerializeField] private FirstPlatform _firstPlatformPrefab;
