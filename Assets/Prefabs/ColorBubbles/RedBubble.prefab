@@ -1,10 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
-<<<<<<< HEAD
---- !u!1 &2524972252243802440
-=======
---- !u!1 &2522042632791453524
->>>>>>> bubbles
+--- !u!1 &2883633463311771026
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -12,51 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 2880644267675613756}
-  - component: {fileID: 4127340919366486491}
-=======
-  - component: {fileID: 4001291604850595576}
-  - component: {fileID: 7980339483596622006}
-  - component: {fileID: 489338773907543474}
-  - component: {fileID: 2403184932969244627}
+  - component: {fileID: 2883633463311771027}
+  - component: {fileID: 2883633463311771030}
+  - component: {fileID: 2883633463311771025}
+  - component: {fileID: 2883633463311771024}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bubble
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4001291604850595576
+--- !u!4 &2883633463311771027
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522042632791453524}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_GameObject: {fileID: 2883633463311771026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6266080942141121251}
+  m_Father: {fileID: 2883633463511390118}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &7980339483596622006
+--- !u!33 &2883633463311771030
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522042632791453524}
+  m_GameObject: {fileID: 2883633463311771026}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &489338773907543474
+--- !u!23 &2883633463311771025
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522042632791453524}
+  m_GameObject: {fileID: 2883633463311771026}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -92,20 +84,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2403184932969244627
+--- !u!135 &2883633463311771024
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2522042632791453524}
+  m_GameObject: {fileID: 2883633463311771026}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &6703689448548382987
+--- !u!1 &2883633463511390112
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -113,9 +105,8 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6266080942141121251}
-  - component: {fileID: 7921240951683252474}
->>>>>>> bubbles
+  - component: {fileID: 2883633463511390118}
+  - component: {fileID: 2883633463511390113}
   m_Layer: 0
   m_Name: RedBubble
   m_TagString: Untagged
@@ -123,55 +114,32 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
---- !u!4 &2880644267675613756
-=======
---- !u!4 &6266080942141121251
->>>>>>> bubbles
+--- !u!4 &2883633463511390118
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2524972252243802440}
-=======
-  m_GameObject: {fileID: 6703689448548382987}
->>>>>>> bubbles
+  m_GameObject: {fileID: 2883633463511390112}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-<<<<<<< HEAD
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4127340919366486491
-=======
   m_Children:
-  - {fileID: 4001291604850595576}
+  - {fileID: 2883633463311771027}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7921240951683252474
->>>>>>> bubbles
+--- !u!114 &2883633463511390113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 2524972252243802440}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: deb446d9ebb354d7fac8961582300d2b, type: 3}
-=======
-  m_GameObject: {fileID: 6703689448548382987}
+  m_GameObject: {fileID: 2883633463511390112}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1fc347535311f41718c4e11e0068f117, type: 3}
->>>>>>> bubbles
   m_Name: 
   m_EditorClassIdentifier: 
   _color: 1
