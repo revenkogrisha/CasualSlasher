@@ -22,8 +22,8 @@ namespace ColorManRun.Generators
         [SerializeField] private LevelObjectsParent _parent;
 
         [Header("ColorBubbles")]
-        [SerializeField] private ColorBubble[] _colorBubbles;
         [SerializeField] private ColorBubblesPair _colorBubblesPairPrefab;
+        [SerializeField] private ColorBubble[] _colorBubbles;
 
         [Header("Settings")]
         [SerializeField] private int _platformsPerLevel = 3;
