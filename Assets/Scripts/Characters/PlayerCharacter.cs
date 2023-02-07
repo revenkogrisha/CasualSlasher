@@ -24,6 +24,8 @@ namespace ColorManRun.Characters
         {
             _color = bubble.Color;
             _renderer.material = bubble.Material;
+
+            bubble.Burst();
         }
     }
 }

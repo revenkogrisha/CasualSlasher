@@ -11,5 +11,10 @@ namespace ColorManRun.ColorFeatures
         public Material Material => _material;
 
         public bool CompareColor(GameColor color) => _color.Equals(color);
+
+        public void Burst()
+        {
+            Destroy(gameObject);
+        }
     }
 }
