@@ -26,7 +26,7 @@ namespace UnityTools
             if (contaiter.GetComponentInParent<T>() != null)
             {
                 handler?.Invoke(
-                    contaiter.GetComponent<T>()
+                    contaiter.GetComponentInParent<T>()
                     );
 
                 return true;
