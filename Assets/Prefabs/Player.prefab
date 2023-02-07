@@ -515,7 +515,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8663572153831084078}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.045241356, y: 1.06, z: -9.990308}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -527,7 +527,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &8663572153838347144
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -544,7 +544,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!143 &8663572152975052680
 CharacterController:
   m_ObjectHideFlags: 0
@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statsConfig: {fileID: 11400000, guid: 2949ac1ec322c44438ad85872d47eb4d, type: 2}
+  _renderer: {fileID: 8663572153842654536}
 --- !u!114 &8663572152975052790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,8 +607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 8663572152975052680}
   _animator: {fileID: 8663572153838347144}
-  _speed: 10
-  _rotationSpeed: 10
+  _horizontalSpeed: 5
+  _forwardSpeed: 5
+  _maxSpeed: 5
 --- !u!1 &8663572153831084080
 GameObject:
   m_ObjectHideFlags: 0
