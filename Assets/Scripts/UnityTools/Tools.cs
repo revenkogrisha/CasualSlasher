@@ -21,9 +21,9 @@ namespace UnityTools
             return false;
         }
 
-        public static bool InvokeIfNotNull<T>(Collider contaiter, Action<T> handler)
+        public static bool InvokeIfNotNullInParent<T>(Collider contaiter, Action<T> handler)
         {
-            if (contaiter.GetComponent<T>() != null)
+            if (contaiter.GetComponentInParent<T>() != null)
             {
                 handler?.Invoke(
                     contaiter.GetComponent<T>()
@@ -35,9 +35,38 @@ namespace UnityTools
             return false;
         }
 
-        public static bool InvokeIfNotNull<T>(Collider2D contaiter, params Action[] handlers)
+        public static bool InvokeIfNotNull<T>(Collision collision, Action<T> handler)
         {
-            if (contaiter.GetComponent<T>() != null)
+            var container = collision.collider;
+            if (container.GetComponent<T>() != null)
+            {
+                handler?.Invoke(
+                    container.GetComponent<T>()
+                    );
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool InvokeIfNotNull<T>(Collider container, Action<T> handler)
+        {
+            if (container.GetComponent<T>() != null)
+            {
+                handler?.Invoke(
+                    container.GetComponent<T>()
+                    );
+
+                return true;
+            }
+
+            return false;
+        }
+
+        public static bool InvokeIfNotNull<T>(Collider2D container, params Action[] handlers)
+        {
+            if (container.GetComponent<T>() != null)
             {
                 foreach (var handler in handlers)
                     handler?.Invoke();
@@ -48,9 +77,9 @@ namespace UnityTools
             return false;
         }
 
-        public static bool InvokeIfNotNull<T>(Collider contaiter, params Action[] handlers)
+        public static bool InvokeIfNotNull<T>(Collider container, params Action[] handlers)
         {
-            if (contaiter.GetComponent<T>() != null)
+            if (container.GetComponent<T>() != null)
             {
                 foreach (var handler in handlers)
                     handler?.Invoke();
