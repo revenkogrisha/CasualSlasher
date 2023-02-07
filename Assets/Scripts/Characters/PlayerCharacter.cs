@@ -12,14 +12,15 @@ namespace ColorManRun.Characters
 
         #region MonoBehaviour
 
-        private void OnTriggerEnter(Collider other)
+        private void OnControllerColliderHit(ControllerColliderHit hit)
         {
-            Tools.InvokeIfNotNull<ColorBubble>(other, TakeColorFromBubble);
+            var other = hit.collider;
+            Tools.InvokeIfNotNullInParent<ColorBubble>(other, TryTakeBubbleColor);
         }
 
         #endregion
 
-        public void TakeColorFromBubble(ColorBubble bubble)
+        public void TryTakeBubbleColor(ColorBubble bubble)
         {
             _color = bubble.Color;
             _renderer.material = bubble.Material;
