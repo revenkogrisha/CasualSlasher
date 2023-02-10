@@ -6,6 +6,7 @@ namespace UnityTools.Buttons
     [RequireComponent(typeof(Button))]
     public abstract class UIButton : MonoBehaviour
     {
+        [Tooltip("If required (Can be null; no exception)")]
         [SerializeField] protected AudioSource Audio;
 
         protected Button Button;

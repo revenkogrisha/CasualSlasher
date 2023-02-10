@@ -8,7 +8,9 @@ namespace UnityTools.Buttons
     /// </summary>
     public class OpenCloseButton : UIButton
     {
+        [Tooltip("If required (Can be null; no exception)")]
         [SerializeField] private GameObject _toOpen;
+        [Tooltip("If required (Can be null; no exception)")]
         [SerializeField] private GameObject _toClose;
 
         protected override void OnClicked()
