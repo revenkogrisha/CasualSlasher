@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace ColorManRun.Level
 {
-    public class ColorPlatform : Platform
+    public class ColorPlatform : Platform, IColorHandler
     {
         [SerializeField] private MeshRenderer _groundRenderer;
         [SerializeField] private ColorBubblesRoot _bubblesPairRoot;
