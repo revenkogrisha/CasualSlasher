@@ -1,6 +1,6 @@
 namespace ColorManRun.ColorFeatures
 {
-    public interface IColorHandler
+    public interface IColorObstacle
     {
         public GameColor Color { get; }
     }
