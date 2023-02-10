@@ -96,6 +96,20 @@ namespace UnityTools
             return isNotComponentNull;
         }
 
+        public static bool InvokeIfNotNullInParent<T>(Collider contaiter, Action<T> handler)
+        {
+            if (contaiter.GetComponentInParent<T>() != null)
+            {
+                handler?.Invoke(
+                    contaiter.GetComponentInParent<T>()
+                    );
+
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>
         /// Takes other methods via Action param and invokes each method
         /// with given argument.
