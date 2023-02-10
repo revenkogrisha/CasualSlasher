@@ -1130,13 +1130,14 @@ GameObject:
   - component: {fileID: 2095013451}
   - component: {fileID: 2095013454}
   - component: {fileID: 2095013452}
+  - component: {fileID: 2095013455}
   m_Layer: 0
   m_Name: WaveSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2095013451
 Transform:
   m_ObjectHideFlags: 0
@@ -1187,6 +1188,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cooldown: 99999
+  _time: 0
+  _timeInSeconds: 0
+  _checkedTime: 0
+--- !u!114 &2095013455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095013450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40eef606b7e0745f2bae84f58dc1f4da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _cooldown: 2
 --- !u!1 &2140513048
 GameObject:
   m_ObjectHideFlags: 0
