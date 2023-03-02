@@ -6,6 +6,7 @@ namespace ColorManRun.Characters
 {
     public class PlayerCharacter : CharacterAwakeInit
     {
+        [SerializeField] private ParticleSystem _deathParticles;
         [SerializeField] private Renderer _renderer;
 
         private GameColor _color;
@@ -38,12 +39,12 @@ namespace ColorManRun.Characters
             if (areColorMatch)
                 return;
 
-            PlayerDie();
+            InvokeDeath();
         }
 
-        private void PlayerDie()
+        private void InvokeDeath()
         {
-            // Die...
+            // Die
         }
     }
 }

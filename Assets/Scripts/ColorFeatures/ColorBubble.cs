@@ -4,6 +4,7 @@ namespace ColorManRun.ColorFeatures
 {
     public class ColorBubble : MonoBehaviour
     {
+        [SerializeField] private ParticleSpawner _particles;
         [SerializeField] private GameColor _color;
         [SerializeField] private Material _material;
 
@@ -14,6 +15,7 @@ namespace ColorManRun.ColorFeatures
 
         public void Burst()
         {
+            _particles.SpawnAndPlay();
             Destroy(gameObject);
         }
     }
