@@ -4,8 +4,8 @@ namespace ColorManRun.Level
 {
     public class FinishPlatform : Platform
     {
-        [SerializeField] private FinishTarget _finish;
+        [SerializeField] private Finish _finish;
 
-        public FinishTarget Finish => _finish;
+        public Finish Finish => _finish;
     }
 }

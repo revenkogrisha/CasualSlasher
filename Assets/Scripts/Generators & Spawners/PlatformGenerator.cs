@@ -42,7 +42,7 @@ namespace ColorManRun.Generators
 
         #endregion
 
-        public FinishTarget GenerateSurface()
+        public Finish GenerateSurface()
         {
             SpawnFirstPlatform(_firstPlatformPrefab);
             for (var i = 1; i < _platformsPerLevel - 1; i++)
@@ -66,7 +66,7 @@ namespace ColorManRun.Generators
             platform = SetColorBubbles(platform, platformColor);
         }
 
-        private FinishTarget SpawnFinishPlatform()
+        private Finish SpawnFinishPlatform()
         {
             var platform = SpawnPlatform(_finishPlatformPrefab);
             return GetFinishTarget(platform);
@@ -140,6 +140,6 @@ namespace ColorManRun.Generators
             return platform;
         }
 
-        private FinishTarget GetFinishTarget(FinishPlatform platform) => platform.Finish;
+        private Finish GetFinishTarget(FinishPlatform platform) => platform.Finish;
     }
 }

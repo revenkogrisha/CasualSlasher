@@ -4,6 +4,6 @@ namespace ColorManRun.Generators
 {
     public interface ISurfaceGenerator
     {
-        public FinishTarget GenerateSurface();
+        public Finish GenerateSurface();
     }
 }

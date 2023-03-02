@@ -35,7 +35,7 @@ namespace ColorManRun.Generators
             SpawnPlayer(playerSpawnPosition);
         }
 
-        private FinishTarget GenerateSuface(NavMeshSurface surface)
+        private Finish GenerateSuface(NavMeshSurface surface)
         {
             var finish = _surfaceGenerator.GenerateSurface();
             _navGenerator.GenerateSurface(surface);
