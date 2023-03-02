@@ -11,10 +11,10 @@ namespace ColorManRun.Control
         [SerializeField] private Animator _animator;
 
         [Header("Settings")]
-        [SerializeField] [Range(0f, 5f)] private float _horizontalSpeed = 5f;
-        [SerializeField] [Range(0f, 10f)] private float _forwardSpeed = 5f;
+        [SerializeField] [Range(0f, 20f)] private float _horizontalSpeed = 5f;
+        [SerializeField] [Range(0f, 20f)] private float _forwardSpeed = 5f;
         [Tooltip("Needed for clamping horizontal & forward speed")]
-        [SerializeField] [Range(0f, 10f)] private float _maxSpeed = 5f;
+        [SerializeField] [Range(0f, 20f)] private float _maxSpeed = 5f;
 
         private MovementAnimator _characterAnimator;
         private PlayerInput _input;

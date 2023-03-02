@@ -607,9 +607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 8663572152975052680}
   _animator: {fileID: 8663572153838347144}
-  _horizontalSpeed: 5
-  _forwardSpeed: 5
-  _maxSpeed: 5
+  _horizontalSpeed: 10
+  _forwardSpeed: 10
+  _maxSpeed: 10
 --- !u!1 &8663572153831084080
 GameObject:
   m_ObjectHideFlags: 0

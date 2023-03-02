@@ -1027,7 +1027,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 8663572152975052681, guid: 2c239dec41555004fa47f6464f1e3f9b,
     type: 3}
   _navSurface: {fileID: 1980677728}
-  _playerSpawnPosition: {x: 0, y: 0, z: 5}
+  _playerSpawnPosition: {x: 0, y: 0, z: -5}
 --- !u!114 &1980677731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,10 +1187,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b86c8efaf9bb548baa0d204d951571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cooldown: 99999
-  _time: 0
-  _timeInSeconds: 0
-  _checkedTime: 0
 --- !u!114 &2095013455
 MonoBehaviour:
   m_ObjectHideFlags: 0
