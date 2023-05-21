@@ -1,10 +1,10 @@
-using ColorManRun.Characters;
-using ColorManRun.Factories;
-using ColorManRun.Level;
+using CasualSlasher.Characters;
+using CasualSlasher.Factories;
+using CasualSlasher.Level;
 using UnityEngine;
 using UnityTools;
 
-namespace ColorManRun.Generators
+namespace CasualSlasher.Generators
 {
     [RequireComponent(typeof(Timer))]
     public class WaveSpawner : MonoBehaviour

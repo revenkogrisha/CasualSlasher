@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.Level
+namespace CasualSlasher.Level
 {
     public abstract class Platform : MonoBehaviour { }
 }

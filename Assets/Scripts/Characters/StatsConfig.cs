@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.Characters
+namespace CasualSlasher.Characters
 {
     [CreateAssetMenu(fileName = "New Stats Config", menuName = "Configs/StatsConfig")]
     public class StatsConfig : ScriptableObject

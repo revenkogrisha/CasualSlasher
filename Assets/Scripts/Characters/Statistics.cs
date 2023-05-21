@@ -1,4 +1,4 @@
-namespace ColorManRun.Characters
+namespace CasualSlasher.Characters
 {
     public struct Statistics
     {

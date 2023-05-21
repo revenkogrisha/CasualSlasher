@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ColorManRun.Characters
+namespace CasualSlasher.Characters
 {
     public class AgentMovement : MonoBehaviour
     {

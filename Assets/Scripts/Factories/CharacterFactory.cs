@@ -1,6 +1,6 @@
-using ColorManRun.Characters;
+using CasualSlasher.Characters;
 
-namespace ColorManRun.Factories
+namespace CasualSlasher.Factories
 {
     public class CharacterFactory : ICharacterFactory
     {

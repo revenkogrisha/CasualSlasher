@@ -1,8 +1,8 @@
-using ColorManRun.ColorFeatures;
-using ColorManRun.Level;
+using CasualSlasher.ColorFeatures;
+using CasualSlasher.Level;
 using UnityEngine;
 
-namespace ColorManRun.Factories
+namespace CasualSlasher.Factories
 {
     public class PlatformFactory
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.Characters
+namespace CasualSlasher.Characters
 {
     public class AgentTarget : MonoBehaviour { }
 }

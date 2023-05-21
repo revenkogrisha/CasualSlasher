@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ColorManRun.ColorFeatures
+namespace CasualSlasher.ColorFeatures
 {
     public class ColorTrioPicker : MonoBehaviour
     {

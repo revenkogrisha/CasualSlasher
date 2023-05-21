@@ -1,8 +1,8 @@
-using ColorManRun.ColorFeatures;
+using CasualSlasher.ColorFeatures;
 using UnityEngine;
 using UnityTools;
 
-namespace ColorManRun.Characters
+namespace CasualSlasher.Characters
 {
     public class PlayerCharacter : CharacterAwakeInit
     {

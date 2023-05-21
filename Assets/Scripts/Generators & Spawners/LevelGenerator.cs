@@ -1,10 +1,10 @@
-using ColorManRun.Characters;
-using ColorManRun.Level;
+using CasualSlasher.Characters;
+using CasualSlasher.Level;
 using System;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ColorManRun.Generators
+namespace CasualSlasher.Generators
 {
     public class LevelGenerator
     {

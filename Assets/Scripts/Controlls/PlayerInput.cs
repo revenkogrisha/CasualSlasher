@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.Control
+namespace CasualSlasher.Control
 {
     public class PlayerInput
     {

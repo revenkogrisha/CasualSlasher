@@ -1,9 +1,9 @@
-using ColorManRun.Characters;
-using ColorManRun.Control;
+using CasualSlasher.Characters;
+using CasualSlasher.Control;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace ColorManRun.Generators
+namespace CasualSlasher.Generators
 {
     public class GameStart : MonoBehaviour
     {

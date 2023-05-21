@@ -1,6 +1,6 @@
-using ColorManRun.Level;
+using CasualSlasher.Level;
 
-namespace ColorManRun.Generators
+namespace CasualSlasher.Generators
 {
     public interface ISurfaceGenerator
     {

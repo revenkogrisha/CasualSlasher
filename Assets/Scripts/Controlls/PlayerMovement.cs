@@ -1,8 +1,8 @@
-using ColorManRun.Characters;
+using CasualSlasher.Characters;
 using System;
 using UnityEngine;
 
-namespace ColorManRun.Control
+namespace CasualSlasher.Control
 {
     public class PlayerMovement : MonoBehaviour
     {

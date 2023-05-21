@@ -1,8 +1,8 @@
-using ColorManRun.Characters;
-using ColorManRun.Factories;
+using CasualSlasher.Characters;
+using CasualSlasher.Factories;
 using UnityEngine;
 
-namespace ColorManRun.Generators
+namespace CasualSlasher.Generators
 {
     public class CharacterSpawner : MonoBehaviour
     {

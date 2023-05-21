@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-namespace ColorManRun.Characters
+namespace CasualSlasher.Characters
 {
     public class Fight : MonoBehaviour
     {

@@ -1,8 +1,8 @@
-using ColorManRun.Characters;
+using CasualSlasher.Characters;
 using UnityEngine;
 using UnityTools;
 
-namespace ColorManRun.Level
+namespace CasualSlasher.Level
 {
     public class Finish : AgentTarget
     {

@@ -1,7 +1,7 @@
-using ColorManRun.ColorFeatures;
+using CasualSlasher.ColorFeatures;
 using UnityEngine;
 
-namespace ColorManRun.Level
+namespace CasualSlasher.Level
 {
     public class ColorPlatform : Platform, IColorObstacle
     {

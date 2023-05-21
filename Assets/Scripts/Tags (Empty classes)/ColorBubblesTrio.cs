@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ColorManRun.ColorFeatures
+namespace CasualSlasher.ColorFeatures
 {
     public class ColorBubblesTrio : MonoBehaviour { }
 }

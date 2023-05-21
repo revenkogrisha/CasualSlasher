@@ -1,9 +1,9 @@
-using ColorManRun.ColorFeatures;
-using ColorManRun.Factories;
-using ColorManRun.Level;
+using CasualSlasher.ColorFeatures;
+using CasualSlasher.Factories;
+using CasualSlasher.Level;
 using UnityEngine;
 
-namespace ColorManRun.Generators
+namespace CasualSlasher.Generators
 {
     public class PlatformGenerator : MonoBehaviour, ISurfaceGenerator
     {

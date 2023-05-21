@@ -1,4 +1,4 @@
-namespace ColorManRun.ColorFeatures
+namespace CasualSlasher.ColorFeatures
 {
     public interface IColorObstacle
     {
