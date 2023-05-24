@@ -24,50 +24,6 @@ namespace CasualSlasher.Generators
         
         private LevelGenerator _levelGenerator;
 
-        #region MonoBehaviour
-
-        private void Awake()
-        {
-            _levelGenerator = new(
-                _platformGenerator,
-                _characterSpawner, 
-                _playerPrefab);
-        }
-
-        private void OnEnable()
-        {
-            _levelGenerator.OnPlayerSpawned += InitCamera;
-            _levelGenerator.OnPlayerSpawned += InitPlayerMovement;
-        }
-    
-        private void OnDisable()
-        {
-            _levelGenerator.OnPlayerSpawned -= InitCamera;
-            _levelGenerator.OnPlayerSpawned -= InitPlayerMovement;
-        }
-
-        private void Start()
-        {
-            GenerateLevel(_levelGenerator);
-        }
-
-        #endregion
-
-        private void InitCamera(PlayerCharacter player)
-        {
-            var playerTransform = player.transform;
-            var playerPosition = playerTransform.position;
-            _orbitCamera.Init(playerTransform, playerPosition);
-        }
-
-        private void InitPlayerMovement(PlayerCharacter player)
-        {
-            if (!player.TryGetComponent<PlayerMovement>(out var movement))
-                throw new System.Exception("No PlayerMovement was found on Player");
-
-            movement.Init(_joystick);
-        }
-
         private void GenerateLevel(LevelGenerator generator)
         {
             generator.GenerateLevel(
