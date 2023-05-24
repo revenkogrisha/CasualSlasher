@@ -7,16 +7,18 @@ namespace CasualSlasher.Control
         [Header("Components")]
         [SerializeField] private Camera _camera;
         
+        [Header("Target to follow")]
+        [SerializeField] private Transform _target;
+
         [Header("Settings")]
         [SerializeField] private Vector3 _cameraOffset = new(0f, 4f, -10f);
 
-        private Transform _target;
         private Transform _transform;
         private Vector3 _distanceToTarget;
 
-        public void Init(Transform target, Vector3 targetPosition)
+        private void Awake()
         {
-            _target = target;
+            var targetPosition = _target.position;
             _transform = _camera.transform;
 
             SetPosition(targetPosition);

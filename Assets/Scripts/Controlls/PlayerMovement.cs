@@ -9,6 +9,7 @@ namespace CasualSlasher.Control
         [Header("Components")]
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Animator _animator;
+        [SerializeField] private Joystick _joystick;
 
         [Header("Settings")]
         [SerializeField] [Range(0f, 20f)] private float _speed = 5f;
@@ -17,7 +18,6 @@ namespace CasualSlasher.Control
 
         private MovementAnimator _characterAnimator;
         private PlayerInput _input;
-        private Joystick _joystick;
 
         public event Action OnRunStarted;
         public event Action OnRunEnded;
