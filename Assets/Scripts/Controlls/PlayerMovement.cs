@@ -15,9 +15,11 @@ namespace CasualSlasher.Control
         [SerializeField] [Range(0f, 20f)] private float _speed = 5f;
         [Tooltip("Needed for clamping horizontal & forward speed")]
         [SerializeField] [Range(0f, 20f)] private float _maxSpeed = 5f;
+        [SerializeField] [Range(0f, 10f)] private float _rotationSpeed = 10f;
 
         private MovementAnimator _characterAnimator;
         private PlayerInput _input;
+        private Transform _transform;
 
         public event Action OnRunStarted;
         public event Action OnRunEnded;
@@ -26,6 +28,7 @@ namespace CasualSlasher.Control
 
         private void Awake()
         {
+            _transform = transform;
             _characterAnimator = new(_animator);
             _input = new();
         }
@@ -62,6 +65,8 @@ namespace CasualSlasher.Control
 
             OnRunStarted?.Invoke();
 
+            ApplyBodyDirection(movement);
+
             movement = ApplyGravity(movement);
             Move(movement);
         }
@@ -86,6 +91,17 @@ namespace CasualSlasher.Control
         {
             movement *= Time.deltaTime;
             _characterController.Move(movement);
+        }
+
+        private void ApplyBodyDirection(Vector3 movement)
+        {
+            if (movement == Vector3.zero)
+                return;
+
+            var direction = Quaternion.LookRotation(movement);
+
+            _transform.rotation = Quaternion.Lerp(
+            _transform.rotation, direction, _rotationSpeed * Time.deltaTime);
         }
     }
 }

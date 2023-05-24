@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _statsConfig: {fileID: 11400000, guid: 2949ac1ec322c44438ad85872d47eb4d, type: 2}
+  _deathParticles: {fileID: 0}
   _renderer: {fileID: 8663572153842654536}
 --- !u!114 &8663572152975052790
 MonoBehaviour:
@@ -607,9 +608,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 8663572152975052680}
   _animator: {fileID: 8663572153838347144}
-  _horizontalSpeed: 10
-  _forwardSpeed: 10
+  _joystick: {fileID: 0}
+  _speed: 5
   _maxSpeed: 10
+  _rotationSpeed: 10
 --- !u!1 &8663572153831084080
 GameObject:
   m_ObjectHideFlags: 0
