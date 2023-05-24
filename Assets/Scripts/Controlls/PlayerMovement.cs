@@ -11,8 +11,7 @@ namespace CasualSlasher.Control
         [SerializeField] private Animator _animator;
 
         [Header("Settings")]
-        [SerializeField] [Range(0f, 20f)] private float _horizontalSpeed = 5f;
-        [SerializeField] [Range(0f, 20f)] private float _forwardSpeed = 5f;
+        [SerializeField] [Range(0f, 20f)] private float _speed = 5f;
         [Tooltip("Needed for clamping horizontal & forward speed")]
         [SerializeField] [Range(0f, 20f)] private float _maxSpeed = 5f;
 
@@ -67,15 +66,15 @@ namespace CasualSlasher.Control
             Move(movement);
         }
 
+        private bool CheckIfStationary(Vector3 movement)
+            => movement.x == 0 && movement.z == 0;
+
         private Vector3 GetVectorWithSpeed(PlayerInput input)
         {
-            var movement = input.GetMovementVector(_joystick, _forwardSpeed, _horizontalSpeed);
+            var movement = input.GetMovementVector(_joystick, _speed);
             movement = Vector3.ClampMagnitude(movement, _maxSpeed);
             return movement;
         }
-
-        private bool CheckIfStationary(Vector3 movement)
-            => movement.x == 0 && movement.z == 0;
 
         private Vector3 ApplyGravity(Vector3 movement)
         {

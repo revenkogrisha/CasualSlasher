@@ -7,16 +7,19 @@ namespace CasualSlasher.Control
         public Vector3 GetMovementVector(Joystick joystick)
         {
             var horizontal = joystick.Horizontal;
-            return new(horizontal, 0f, 1f);
+            var vertical = joystick.Vertical;
+
+            return new(horizontal, 0f, vertical);
         }
 
-        public Vector3 GetMovementVector(Joystick joystick, float forwardSpeed, float horizontalSpeed)
+        public Vector3 GetMovementVector(Joystick joystick, float speed)
         {
             var horizontal = joystick.Horizontal;
+            var vertical = joystick.Vertical;
             return new(
-                horizontal * horizontalSpeed,
+                horizontal * speed,
                 0f,
-                forwardSpeed);
+                vertical * speed);
         }
     }
 }
