@@ -1,36 +1,33 @@
 using System;
 using UnityEngine;
 
-namespace CasualSlasher.Characters
+public class Character : MonoBehaviour
 {
-    public class Character : MonoBehaviour
+    private Statistics _stats;
+
+    public Statistics Stats => _stats;
+
+    public event Action OnDamageTaken;
+    public event Action OnCharacterDied;
+
+    public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
+
+    public void TakeDamage(float amount)
     {
-        private Statistics _stats;
+        var damage = amount - _stats.DamageResistance;
+        _stats.HealthAmount -= damage;
 
-        public Statistics Stats => _stats;
-
-        public event Action OnDamageTaken;
-        public event Action OnCharacterDied;
-
-        public void InitStats(StatsConfig statsConfig) => _stats = new(statsConfig);
-
-        public void TakeDamage(float amount)
+        if (_stats.HealthAmount <= 0)
         {
-            var damage = amount - _stats.DamageResistance;
-            _stats.HealthAmount -= damage;
-
-            if (_stats.HealthAmount <= 0)
-            {
-                Die();
-                return;
-            }
-
-            OnDamageTaken?.Invoke();
+            Die();
+            return;
         }
 
-        protected void Die()
-        {
-            OnCharacterDied?.Invoke();
-        }
+        OnDamageTaken?.Invoke();
+    }
+
+    protected virtual void Die()
+    {
+        OnCharacterDied?.Invoke();
     }
 }
