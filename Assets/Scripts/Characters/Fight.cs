@@ -23,7 +23,7 @@ public class Fight : MonoBehaviour
         _character.OnDamageTaken -= GetStun;
     }
 
-        private void OnTriggerStay(Collider other) => TryHit(_character.Stats.DamageAmount);
+    private void OnTriggerStay(Collider other) => TryHit(_character.Stats.DamageAmount);
 
     #endregion
 
