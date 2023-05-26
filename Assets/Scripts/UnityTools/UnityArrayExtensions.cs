@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 namespace UnityTools
@@ -8,11 +7,11 @@ namespace UnityTools
     {
         public static void ShuffleArray(this Array array)
         {
-            var newArray = array.Clone() as int[];
+            int[] newArray = array.Clone() as int[];
             for (int i = 0; i < newArray.Length; i++)
             {
-                var temp = newArray[i];
-                var random = Random.Range(0, newArray.Length);
+                int temp = newArray[i];
+                int random = Random.Range(0, newArray.Length);
 
                 newArray[i] = newArray[random];
                 newArray[random] = temp;
