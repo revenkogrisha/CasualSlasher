@@ -1,24 +1,26 @@
-using System;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterAnimator))]
-public class RelativeMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;
+    [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private DynamicJoystick _joystick;
     [SerializeField] private float _speed = 15f;
     [SerializeField] private float _rotationSpeed = 15f;
 
     private Transform _transform;
 
-    public event Action OnRunStarted;
-    public event Action OnRunEnded;
-
     #region MonoBehaviour
 
-    private void Awake() => _transform = transform;
+    private void Awake()
+    {
+        _transform = transform;
+    }
 
-    private void Update() => TryMove();
+    private void Update()
+    {
+        TryMove();
+    }
 
     #endregion
 
@@ -27,11 +29,11 @@ public class RelativeMovement : MonoBehaviour
         var movement = GetMovementVector();
         if (movement.x == 0 && movement.z == 0)
         {
-            OnRunEnded?.Invoke();
+            _characterAnimator.DisableRunning();
             return;
         }
 
-        OnRunStarted?.Invoke();
+        _characterAnimator.EnableRunning();
             
         ApplyBodyDirection(movement);
 
