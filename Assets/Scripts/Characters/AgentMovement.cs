@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class AgentMovement : MonoBehaviour
 {
     [SerializeField] private Character _character;
+    [SerializeField] private CharacterAnimator _characterAnimator;
     [SerializeField] private Transform _hitSphere;
     [SerializeField] private float _hitRadius;
     [SerializeField] private float _stopDistance = 3f;
@@ -14,9 +15,6 @@ public class AgentMovement : MonoBehaviour
     private Transform _target;
     private LayerMask _targetLayer;
     private bool _isMovementBlocked = false;
-
-    public event Action OnMovementStarted;
-    public event Action OnMovementStopped;
 
     #region MonoBehaviour
 
@@ -66,8 +64,8 @@ public class AgentMovement : MonoBehaviour
     private void TryInvokeMovementEvents()
     {
         if (_navMeshAgent.isStopped)
-            OnMovementStopped?.Invoke();
+            _characterAnimator.DisableRunning();
         else
-            OnMovementStarted?.Invoke();
+            _characterAnimator.EnableRunning();
     }
 }
