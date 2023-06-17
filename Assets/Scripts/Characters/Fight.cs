@@ -4,6 +4,7 @@ using UnityEngine;
 public class Fight : MonoBehaviour
 {
     [SerializeField] private Character _character;
+    [SerializeField] private CharacterAnimator _animator;
     [SerializeField] private float _hitCooldown = 2f;
     [SerializeField] private float _hitRadius;
     [SerializeField] private Transform _hitSphere;
@@ -40,11 +41,11 @@ public class Fight : MonoBehaviour
             character = item.GetComponentInParent<Character>();
             if (character)
             {
+                _animator.PerformHitting();
                 character.TakeDamage(damage);
                 StartCoroutine(StartHitCooldown(_hitCooldown));
             }
         }
-
     }
 
     private void GetStun()

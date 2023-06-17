@@ -1471,6 +1471,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _character: {fileID: 3750963082589115413}
+  _animator: {fileID: 3750963082589115409}
   _hitCooldown: 1
   _hitRadius: 0.6
   _hitSphere: {fileID: 3750963081739578087}
