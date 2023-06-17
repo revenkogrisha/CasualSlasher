@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3366b9ec841463748b0a4032f9bca474, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  _healthAmount: 10
+  _healthAmount: 100
   _damageAmount: 5
   _damageResistance: 0
   _stunDuration: 1
