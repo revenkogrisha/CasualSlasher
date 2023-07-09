@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class FPSSetup : MonoBehaviour
+public class TargetFrameRateSetup : MonoBehaviour
 {
     private void Awake()
     {
