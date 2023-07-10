@@ -39,18 +39,18 @@ public class Fight : MonoBehaviour
         foreach (var item in hitted)
         {
             character = item.GetComponentInParent<Character>();
-            if (character != null && character.IsAlive)
+            if (character == null)
+                return;
+
+            if (character.IsAlive == true)
             {
-                print($"{gameObject.name}: perform hit");
                 _animator.PerformHitting();
                 character.TakeDamage(damage);
                 StartCoroutine(StartHitCooldown(_hitCooldown));
             }
 
-            if (character != null && !character.IsAlive)
-            {
+            if (character.IsAlive == false)
                 _animator.EndHitting();
-            }
         }
     }
 
