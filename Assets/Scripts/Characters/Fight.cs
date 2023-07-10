@@ -39,8 +39,9 @@ public class Fight : MonoBehaviour
         foreach (var item in hitted)
         {
             character = item.GetComponentInParent<Character>();
-            if (character)
+            if (character != null)
             {
+                print($"{gameObject.name}: perform hit");
                 _animator.PerformHitting();
                 character.TakeDamage(damage);
                 StartCoroutine(StartHitCooldown(_hitCooldown));
