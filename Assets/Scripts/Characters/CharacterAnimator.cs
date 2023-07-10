@@ -19,6 +19,11 @@ public class CharacterAnimator : MonoBehaviour
 
     public void PerformHitting()
     {
-        _animator.SetTrigger(Hitting);
+        _animator.SetBool(Hitting, true);
+    }
+
+    public void EndHitting()
+    {
+        _animator.SetBool(Hitting, false);
     }
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     private Statistics _stats;
+    private bool _isAlive = true;
 
     public Statistics Stats => _stats;
+    public bool IsAlive => _isAlive;
 
     public event Action OnDamageTaken;
     public event Action OnCharacterDied;
@@ -28,6 +30,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Die()
     {
+        _isAlive = false;
         OnCharacterDied?.Invoke();
     }
 }
