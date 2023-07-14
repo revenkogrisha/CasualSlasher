@@ -26,6 +26,8 @@ public class Fight : MonoBehaviour
 
     private void OnTriggerStay(Collider other) => TryHit(_character.Stats.DamageAmount);
 
+    private void OnTriggerExit(Collider other) => _animator.EndHitting();
+
     #endregion
 
     public void TryHit(float damage)
